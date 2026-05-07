@@ -8,7 +8,6 @@ npm-debug.log
 yarn-debug.log
 yarn-error.log
 
-# Debug files
 src/data/cardQaDebug.json
 src/data/officialCardDetailsDebug.json
 src/data/officialNetworkRaw.json
