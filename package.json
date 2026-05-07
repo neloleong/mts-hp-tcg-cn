@@ -1,0 +1,27 @@
+{
+  "name": "MTS'-harry-potter-tcg-cn",
+  "version": "1.0.0",
+  "description": "MTS' Harry Potter TCG Chinese card database website.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "download:qa": "node scripts/downloadHarryPotterQa.js",
+    "capture:qa": "node scripts/captureHarryPotterQaManual.js",
+    "translate:qa": "node scripts/translateCardQaToChinese.js",
+    "fix:qa": "node scripts/fixCardQaMapping.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.105.3",
+    "@vitejs/plugin-react": "latest",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.1",
+    "lucide-react": "latest",
+    "playwright": "^1.59.1",
+    "react": "latest",
+    "react-dom": "latest",
+    "vite": "latest"
+  }
+}

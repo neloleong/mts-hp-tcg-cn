@@ -1,0 +1,22 @@
+node_modules
+dist
+.env
+.env.local
+.DS_Store
+.vscode
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Debug files
+src/data/cardQaDebug.json
+src/data/officialCardDetailsDebug.json
+src/data/officialNetworkRaw.json
+src/data/officialNetworkRaw.txt
+src/data/officialQaNetworkManual.json
+src/data/officialQaNetworkManual.txt
+src/data/officialCardDetailRequest.json
+src/data/officialCardDetailRequest.txt
+src/data/cardModalRaw.json
+src/data/cardModalRaw.txt
+src/data/cardModalRaw.html

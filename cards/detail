@@ -1,0 +1,318 @@
+import fs from "fs";
+import path from "path";
+import { chromium } from "playwright";
+
+const ROOT_DIR = process.cwd();
+const OUT_DIR = path.join(ROOT_DIR, "src", "data");
+
+const RAW_JSON_PATH = path.join(OUT_DIR, "cardModalRaw.json");
+const RAW_TXT_PATH = path.join(OUT_DIR, "cardModalRaw.txt");
+const RAW_HTML_PATH = path.join(OUT_DIR, "cardModalRaw.html");
+const NETWORK_JSON_PATH = path.join(OUT_DIR, "officialQaNetworkManual.json");
+const NETWORK_TXT_PATH = path.join(OUT_DIR, "officialQaNetworkManual.txt");
+const DETAIL_JSON_PATH = path.join(OUT_DIR, "officialCardDetailRequest.json");
+const DETAIL_TXT_PATH = path.join(OUT_DIR, "officialCardDetailRequest.txt");
+
+const TARGET_URL =
+  "https://tcg.movic.jp/harrypotter/cardlist/?cardProductId=2";
+
+function ensureDir(dir) {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+}
+
+function isProbablyBinary(text = "") {
+  if (!text) return false;
+
+  const replacementCount = (text.match(/\uFFFD/g) || []).length;
+  const nullCount = (text.match(/\u0000/g) || []).length;
+
+  if (replacementCount > 20) return true;
+  if (nullCount > 0) return true;
+
+  const sample = text.slice(0, 1000);
+  let weird = 0;
+
+  for (const ch of sample) {
+    const code = ch.charCodeAt(0);
+    const normal =
+      code === 9 ||
+      code === 10 ||
+      code === 13 ||
+      (code >= 32 && code <= 126) ||
+      (code >= 0x3000 && code <= 0x30ff) ||
+      (code >= 0x4e00 && code <= 0x9fff) ||
+      (code >= 0xff00 && code <= 0xffef);
+
+    if (!normal) weird++;
+  }
+
+  return sample.length > 0 && weird / sample.length > 0.25;
+}
+
+function looksLikeQaText(text = "") {
+  return (
+    text.includes("Q:") ||
+    text.includes("Ｑ") ||
+    text.includes("A:") ||
+    text.includes("Ａ") ||
+    text.includes("qa") ||
+    text.includes("question") ||
+    text.includes("answer") ||
+    text.includes("発動しません") ||
+    text.includes("反撃") ||
+    text.includes("ミネルバ") ||
+    text.includes("マクゴナガル") ||
+    text.includes("01-024")
+  );
+}
+
+async function safeResponseText(response) {
+  try {
+    const headers = response.headers();
+    const contentType = headers["content-type"] || "";
+
+    if (
+      contentType.includes("image/") ||
+      contentType.includes("font/") ||
+      contentType.includes("audio/") ||
+      contentType.includes("video/") ||
+      contentType.includes("application/octet-stream")
+    ) {
+      return null;
+    }
+
+    const text = await response.text();
+
+    if (isProbablyBinary(text)) {
+      return null;
+    }
+
+    return text;
+  } catch {
+    return null;
+  }
+}
+
+async function main() {
+  ensureDir(OUT_DIR);
+
+  const browser = await chromium.launch({
+    headless: false,
+    slowMo: 80
+  });
+
+  const page = await browser.newPage({
+    viewport: {
+      width: 1440,
+      height: 1000
+    }
+  });
+
+  const requestMap = new Map();
+  const networkItems = [];
+  const detailItems = [];
+
+  page.on("request", async (request) => {
+    const url = request.url();
+
+    requestMap.set(url, {
+      url,
+      method: request.method(),
+      headers: request.headers(),
+      postData: request.postData()
+    });
+  });
+
+  page.on("response", async (response) => {
+    const url = response.url();
+    const status = response.status();
+    const headers = response.headers();
+    const contentType = headers["content-type"] || "";
+    const request = response.request();
+
+    const requestInfo = {
+      url: request.url(),
+      method: request.method(),
+      headers: request.headers(),
+      postData: request.postData()
+    };
+
+    const text = await safeResponseText(response);
+
+    if (!text) return;
+
+    const item = {
+      status,
+      url,
+      contentType,
+      request: requestInfo,
+      matchedQaText: looksLikeQaText(text),
+      textPreview: text.slice(0, 3000),
+      text
+    };
+
+    networkItems.push(item);
+
+    if (url.includes("/card-management/api/public/cards/detail")) {
+      detailItems.push(item);
+
+      console.log("");
+      console.log("DETAIL API captured:");
+      console.log("METHOD:", requestInfo.method);
+      console.log("URL:", url);
+      console.log("POST DATA:", requestInfo.postData);
+      console.log("RESPONSE PREVIEW:");
+      console.log(text.slice(0, 800));
+      console.log("");
+    }
+
+    if (item.matchedQaText) {
+      console.log("");
+      console.log("Possible Q&A response captured:");
+      console.log(status, url);
+      console.log(text.slice(0, 500));
+      console.log("");
+    }
+  });
+
+  console.log("Opening official Card List page...");
+  console.log(TARGET_URL);
+
+  await page.goto(TARGET_URL, {
+    waitUntil: "networkidle",
+    timeout: 60000
+  });
+
+  console.log("");
+  console.log("請在打開的 Chromium 裏操作：");
+  console.log("1. 點開 01-024「ミネルバ・マクゴナガル」");
+  console.log("2. 確認彈窗裏見到 Q:62 / 反撃 / 発動しません");
+  console.log("3. 回到這個 PowerShell 視窗，按 Enter");
+  console.log("");
+
+  await new Promise((resolve) => {
+    process.stdin.resume();
+    process.stdin.once("data", resolve);
+  });
+
+  const bodyText = await page.locator("body").innerText().catch(() => "");
+  const html = await page.content().catch(() => "");
+
+  const possibleQaNetworkItems = networkItems.filter((item) =>
+    looksLikeQaText(item.text)
+  );
+
+  const result = {
+    capturedAt: new Date().toISOString(),
+    targetUrl: TARGET_URL,
+    networkCount: networkItems.length,
+    possibleQaNetworkCount: possibleQaNetworkItems.length,
+    detailApiCount: detailItems.length,
+    detailItems: detailItems.map((item) => ({
+      status: item.status,
+      url: item.url,
+      contentType: item.contentType,
+      request: item.request,
+      textPreview: item.textPreview
+    })),
+    possibleQaNetworkItems: possibleQaNetworkItems.map((item) => ({
+      status: item.status,
+      url: item.url,
+      contentType: item.contentType,
+      request: item.request,
+      textPreview: item.textPreview
+    })),
+    bodyText
+  };
+
+  fs.writeFileSync(RAW_JSON_PATH, JSON.stringify(result, null, 2), "utf8");
+  fs.writeFileSync(RAW_TXT_PATH, bodyText, "utf8");
+  fs.writeFileSync(RAW_HTML_PATH, html, "utf8");
+
+  fs.writeFileSync(
+    NETWORK_JSON_PATH,
+    JSON.stringify(networkItems, null, 2),
+    "utf8"
+  );
+
+  fs.writeFileSync(
+    NETWORK_TXT_PATH,
+    networkItems
+      .map((item, index) => {
+        return [
+          `========== ${index + 1} ==========`,
+          `STATUS: ${item.status}`,
+          `URL: ${item.url}`,
+          `CONTENT-TYPE: ${item.contentType}`,
+          `REQUEST METHOD: ${item.request.method}`,
+          `REQUEST POST DATA: ${item.request.postData || ""}`,
+          "",
+          item.text
+        ].join("\n");
+      })
+      .join("\n\n"),
+    "utf8"
+  );
+
+  fs.writeFileSync(
+    DETAIL_JSON_PATH,
+    JSON.stringify(detailItems, null, 2),
+    "utf8"
+  );
+
+  fs.writeFileSync(
+    DETAIL_TXT_PATH,
+    detailItems
+      .map((item, index) => {
+        return [
+          `========== DETAIL ${index + 1} ==========`,
+          `STATUS: ${item.status}`,
+          `URL: ${item.url}`,
+          `CONTENT-TYPE: ${item.contentType}`,
+          `REQUEST METHOD: ${item.request.method}`,
+          `REQUEST POST DATA: ${item.request.postData || ""}`,
+          "",
+          "RESPONSE:",
+          item.text
+        ].join("\n");
+      })
+      .join("\n\n"),
+    "utf8"
+  );
+
+  console.log("");
+  console.log("Saved:");
+  console.log(RAW_JSON_PATH);
+  console.log(RAW_TXT_PATH);
+  console.log(RAW_HTML_PATH);
+  console.log(NETWORK_JSON_PATH);
+  console.log(NETWORK_TXT_PATH);
+  console.log(DETAIL_JSON_PATH);
+  console.log(DETAIL_TXT_PATH);
+  console.log("");
+  console.log(`Network items captured: ${networkItems.length}`);
+  console.log(`Possible Q&A Network items: ${possibleQaNetworkItems.length}`);
+  console.log(`Detail API items captured: ${detailItems.length}`);
+  console.log("");
+
+  if (detailItems.length > 0) {
+    console.log("已捕捉到 cards/detail。請檢查下面資料：");
+    for (const item of detailItems) {
+      console.log("METHOD:", item.request.method);
+      console.log("POST DATA:", item.request.postData || "");
+      console.log("URL:", item.url);
+      console.log("");
+    }
+  } else {
+    console.log("未捕捉到 cards/detail，請確認你有點開卡牌彈窗。");
+  }
+
+  await browser.close();
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
