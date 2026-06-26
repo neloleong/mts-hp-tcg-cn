@@ -2407,3 +2407,957 @@ main {
     padding: 14px 16px;
   }
 }
+
+/* =========================
+   Portal Home Page - Parchment Library Style
+========================= */
+
+.site-header {
+  background: rgba(250, 246, 235, 0.96);
+  border-bottom: 1px solid rgba(92, 54, 34, 0.18);
+  box-shadow: 0 8px 30px rgba(66, 39, 24, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.brand-main {
+  color: #6f1d1b;
+}
+
+.brand-copy {
+  color: #4b3428;
+}
+
+.nav-link {
+  color: #4b3428;
+}
+
+.nav-link:hover {
+  color: #6f1d1b;
+  background: rgba(111, 29, 27, 0.08);
+}
+
+.nav-link.active {
+  color: #ffffff;
+  background: #6f1d1b;
+  border-color: #6f1d1b;
+}
+
+.portal-home {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 80px);
+  padding: 72px 24px 80px;
+  background:
+    radial-gradient(circle at 16% 12%, rgba(111, 29, 27, 0.08), transparent 28%),
+    radial-gradient(circle at 86% 18%, rgba(132, 88, 54, 0.12), transparent 34%),
+    linear-gradient(135deg, #fbf6ea 0%, #f4ead8 48%, #efe0c8 100%);
+  color: #2f2118;
+}
+
+.portal-home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(92, 54, 34, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(92, 54, 34, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+}
+
+.portal-home::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.55), transparent 28%, transparent 72%, rgba(255, 255, 255, 0.32));
+  pointer-events: none;
+}
+
+.portal-bg-glow {
+  display: none;
+}
+
+.portal-hero {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.portal-hero-content {
+  padding: 28px 0;
+}
+
+.portal-kicker {
+  margin: 0 0 18px;
+  color: #8a3d2b;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+}
+
+.portal-hero h1 {
+  margin: 0;
+  color: #2f2118;
+  font-size: clamp(44px, 5vw, 76px);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.72);
+}
+
+.portal-lead {
+  width: min(680px, 100%);
+  margin: 28px 0 0;
+  color: #5b4638;
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.portal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.portal-btn {
+  min-width: 170px;
+  border: 1px solid rgba(111, 29, 27, 0.28);
+  border-radius: 999px;
+  padding: 14px 22px;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+
+.portal-btn:hover {
+  transform: translateY(-2px);
+}
+
+.portal-btn-primary {
+  color: #ffffff;
+  background: linear-gradient(135deg, #8f2f2b, #5f1717);
+  box-shadow: 0 18px 40px rgba(111, 29, 27, 0.18);
+}
+
+.portal-btn-secondary {
+  color: #5f1717;
+  background: rgba(255, 255, 255, 0.48);
+  border-color: rgba(111, 29, 27, 0.36);
+}
+
+.portal-btn-secondary:hover {
+  background: #ffffff;
+  border-color: #6f1d1b;
+}
+
+.portal-showcase {
+  position: relative;
+  min-height: 430px;
+}
+
+.showcase-card {
+  border: 1px solid rgba(111, 29, 27, 0.18);
+  border-radius: 28px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.76), rgba(255, 249, 235, 0.88));
+  box-shadow:
+    0 26px 70px rgba(66, 39, 24, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.showcase-card-main {
+  padding: 34px;
+}
+
+.showcase-label {
+  display: inline-flex;
+  margin-bottom: 18px;
+  color: #8a3d2b;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+}
+
+.showcase-card h2 {
+  margin: 0;
+  color: #2f2118;
+  font-size: 34px;
+}
+
+.showcase-card p {
+  margin: 18px 0 26px;
+  color: #654f41;
+  line-height: 1.8;
+}
+
+.showcase-card button,
+.portal-game-card button {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 18px;
+  color: #ffffff;
+  background: #6f1d1b;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(111, 29, 27, 0.18);
+}
+
+.showcase-card button:hover,
+.portal-game-card button:hover {
+  background: #8f2f2b;
+}
+
+.showcase-stack {
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.mini-showcase {
+  border: 1px solid rgba(111, 29, 27, 0.16);
+  border-radius: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 16px 36px rgba(66, 39, 24, 0.11);
+}
+
+.mini-showcase span {
+  display: block;
+  margin-bottom: 8px;
+  color: #8a3d2b;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.mini-showcase strong {
+  color: #2f2118;
+  font-size: 18px;
+}
+
+.portal-section-title {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, 100%);
+  margin: 56px auto 22px;
+}
+
+.portal-section-title p {
+  margin: 0 0 8px;
+  color: #8a3d2b;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+}
+
+.portal-section-title h2 {
+  margin: 0;
+  color: #2f2118;
+  font-size: clamp(26px, 3vw, 38px);
+}
+
+.portal-game-grid {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.portal-game-card {
+  border: 1px solid rgba(111, 29, 27, 0.16);
+  border-radius: 26px;
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow:
+    0 22px 60px rgba(66, 39, 24, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.86);
+}
+
+.game-card-header {
+  margin-bottom: 18px;
+}
+
+.status-pill {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.status-pill.open {
+  color: #ffffff;
+  background: #6f1d1b;
+}
+
+.status-pill.planned {
+  color: #5c4033;
+  background: rgba(132, 88, 54, 0.16);
+}
+
+.portal-game-card h3 {
+  margin: 0;
+  color: #2f2118;
+  font-size: 26px;
+}
+
+.portal-game-card h4 {
+  margin: 8px 0 0;
+  color: #8a3d2b;
+  font-size: 16px;
+}
+
+.portal-game-card p {
+  margin: 18px 0 24px;
+  color: #654f41;
+  line-height: 1.8;
+}
+
+.planned-games ul {
+  margin: 18px 0 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.planned-games li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid rgba(92, 54, 34, 0.13);
+  padding: 12px 0;
+  color: #654f41;
+}
+
+.planned-games li strong {
+  color: #2f2118;
+}
+
+.planned-games li span {
+  color: #7a6354;
+}
+
+@media (max-width: 980px) {
+  .portal-home {
+    padding: 48px 18px 64px;
+  }
+
+  .portal-hero {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .portal-showcase {
+    min-height: auto;
+  }
+
+  .showcase-stack {
+    position: static;
+    margin-top: 14px;
+  }
+
+  .portal-game-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .portal-hero h1 {
+    font-size: 42px;
+  }
+
+  .portal-lead {
+    font-size: 15px;
+  }
+
+  .portal-actions {
+    flex-direction: column;
+  }
+
+  .portal-btn {
+    width: 100%;
+  }
+
+  .showcase-stack {
+    grid-template-columns: 1fr;
+  }
+
+  .planned-games li {
+    flex-direction: column;
+  }
+}
+
+/* =========================
+   Portal Neutral Theme
+   只影響總站首頁 / 遊戲列表
+========================= */
+
+:root {
+  --neutral-bg: #f5f7fb;
+  --neutral-surface: #ffffff;
+  --neutral-border: #d9e1ec;
+  --neutral-border-strong: #c8d3e0;
+  --neutral-text: #1f2937;
+  --neutral-muted: #64748b;
+  --neutral-subtle: #94a3b8;
+  --neutral-primary: #2563eb;
+  --neutral-primary-dark: #1d4ed8;
+  --neutral-primary-soft: #eff6ff;
+  --neutral-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+}
+
+/* 總站外殼，不影響 Harry Potter */
+
+.portal-theme {
+  min-height: 100vh;
+  background: var(--neutral-bg);
+  color: var(--neutral-text);
+  font-family: "Microsoft JhengHei", "PingFang TC", Arial, sans-serif;
+}
+
+/* 總站 header */
+
+.portal-theme .site-header {
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid var(--neutral-border);
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
+  backdrop-filter: blur(16px);
+}
+
+.portal-theme .brand {
+  color: var(--neutral-text);
+}
+
+.portal-theme .brand-main {
+  color: var(--neutral-text);
+  letter-spacing: 0.08em;
+  text-shadow: none;
+}
+
+.portal-theme .brand-copy {
+  color: var(--neutral-muted);
+}
+
+.portal-theme .nav-link {
+  color: var(--neutral-muted);
+  border: 1px solid transparent;
+  background: transparent;
+}
+
+.portal-theme .nav-link:hover {
+  color: var(--neutral-primary);
+  background: var(--neutral-primary-soft);
+  border-color: #bfdbfe;
+}
+
+.portal-theme .nav-link.active {
+  color: #ffffff;
+  background: var(--neutral-primary);
+  border-color: var(--neutral-primary);
+}
+
+.portal-theme .menu-btn {
+  color: var(--neutral-text);
+  border-color: var(--neutral-border);
+}
+
+/* 總站 main 需要全寬，HP 仍然用原本 main */
+
+.portal-theme main {
+  width: 100%;
+  margin: 0;
+}
+
+/* Portal 首頁 */
+
+.portal-theme .portal-home {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 80px);
+  padding: 72px 24px 80px;
+  background:
+    radial-gradient(circle at 15% 5%, rgba(37, 99, 235, 0.08), transparent 30%),
+    radial-gradient(circle at 85% 10%, rgba(14, 165, 233, 0.08), transparent 32%),
+    linear-gradient(180deg, #ffffff 0%, #f5f7fb 52%, #eef2f7 100%);
+  color: var(--neutral-text);
+}
+
+.portal-theme .portal-home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+  pointer-events: none;
+}
+
+.portal-theme .portal-home::after,
+.portal-theme .portal-bg-glow {
+  display: none;
+}
+
+.portal-theme .portal-hero {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.portal-theme .portal-hero-content {
+  padding: 28px 0;
+}
+
+.portal-theme .portal-kicker {
+  margin: 0 0 18px;
+  color: var(--neutral-primary);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+}
+
+.portal-theme .portal-hero h1 {
+  margin: 0;
+  color: var(--neutral-text);
+  font-size: clamp(44px, 5vw, 76px);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  text-shadow: none;
+}
+
+.portal-theme .portal-lead {
+  width: min(680px, 100%);
+  margin: 28px 0 0;
+  color: var(--neutral-muted);
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.portal-theme .portal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.portal-theme .portal-btn {
+  min-width: 170px;
+  border: 1px solid var(--neutral-border-strong);
+  border-radius: 999px;
+  padding: 14px 22px;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+
+.portal-theme .portal-btn:hover {
+  transform: translateY(-2px);
+}
+
+.portal-theme .portal-btn-primary {
+  color: #ffffff;
+  background: var(--neutral-primary);
+  box-shadow: 0 16px 34px rgba(37, 99, 235, 0.22);
+}
+
+.portal-theme .portal-btn-primary:hover {
+  background: var(--neutral-primary-dark);
+}
+
+.portal-theme .portal-btn-secondary {
+  color: var(--neutral-text);
+  background: #ffffff;
+  border-color: var(--neutral-border-strong);
+}
+
+.portal-theme .portal-btn-secondary:hover {
+  color: var(--neutral-primary);
+  border-color: #93c5fd;
+  background: var(--neutral-primary-soft);
+}
+
+/* 首頁右側展示卡 */
+
+.portal-theme .portal-showcase {
+  position: relative;
+  min-height: 430px;
+}
+
+.portal-theme .showcase-card {
+  border: 1px solid var(--neutral-border);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--neutral-shadow);
+  backdrop-filter: blur(16px);
+}
+
+.portal-theme .showcase-card-main {
+  padding: 34px;
+}
+
+.portal-theme .showcase-label {
+  display: inline-flex;
+  margin-bottom: 18px;
+  color: var(--neutral-primary);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+}
+
+.portal-theme .showcase-card h2 {
+  margin: 0;
+  color: var(--neutral-text);
+  font-size: 34px;
+}
+
+.portal-theme .showcase-card p {
+  margin: 18px 0 26px;
+  color: var(--neutral-muted);
+  line-height: 1.8;
+}
+
+.portal-theme .showcase-card button,
+.portal-theme .portal-game-card button,
+.portal-theme .game-card button {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 18px;
+  color: #ffffff;
+  background: var(--neutral-primary);
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 12px 26px rgba(37, 99, 235, 0.18);
+}
+
+.portal-theme .showcase-card button:hover,
+.portal-theme .portal-game-card button:hover,
+.portal-theme .game-card button:hover {
+  background: var(--neutral-primary-dark);
+}
+
+.portal-theme .showcase-stack {
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.portal-theme .mini-showcase {
+  border: 1px solid var(--neutral-border);
+  border-radius: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.07);
+}
+
+.portal-theme .mini-showcase span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--neutral-subtle);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.portal-theme .mini-showcase strong {
+  color: var(--neutral-text);
+  font-size: 18px;
+}
+
+/* 首頁資料庫卡片 */
+
+.portal-theme .portal-section-title {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, 100%);
+  margin: 56px auto 22px;
+}
+
+.portal-theme .portal-section-title p {
+  margin: 0 0 8px;
+  color: var(--neutral-primary);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+}
+
+.portal-theme .portal-section-title h2 {
+  margin: 0;
+  color: var(--neutral-text);
+  font-size: clamp(26px, 3vw, 38px);
+}
+
+.portal-theme .portal-game-grid {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.portal-theme .portal-game-card {
+  border: 1px solid var(--neutral-border);
+  border-radius: 26px;
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--neutral-shadow);
+}
+
+.portal-theme .status-pill {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.portal-theme .status-pill.open {
+  color: #ffffff;
+  background: #16a34a;
+}
+
+.portal-theme .status-pill.planned {
+  color: #475569;
+  background: #e2e8f0;
+}
+
+.portal-theme .portal-game-card h3 {
+  margin: 0;
+  color: var(--neutral-text);
+  font-size: 26px;
+}
+
+.portal-theme .portal-game-card h4 {
+  margin: 8px 0 0;
+  color: var(--neutral-primary);
+  font-size: 16px;
+}
+
+.portal-theme .portal-game-card p {
+  margin: 18px 0 24px;
+  color: var(--neutral-muted);
+  line-height: 1.8;
+}
+
+.portal-theme .planned-games ul {
+  margin: 18px 0 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.portal-theme .planned-games li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--neutral-border);
+  padding: 12px 0;
+  color: var(--neutral-muted);
+}
+
+.portal-theme .planned-games li strong {
+  color: var(--neutral-text);
+}
+
+.portal-theme .planned-games li span {
+  color: var(--neutral-muted);
+}
+
+/* 遊戲列表頁 GameSelectPage */
+
+.portal-theme .game-select-page {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 64px 0 86px;
+  color: var(--neutral-text);
+}
+
+.portal-theme .game-select-page .section-heading h1,
+.portal-theme .game-select-page .section-heading h2 {
+  color: var(--neutral-text);
+}
+
+.portal-theme .game-select-page .section-heading p {
+  color: var(--neutral-muted);
+  line-height: 1.8;
+}
+
+.portal-theme .game-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 28px;
+}
+
+.portal-theme .game-card {
+  border: 1px solid var(--neutral-border);
+  border-radius: 26px;
+  padding: 28px;
+  background: #ffffff;
+  box-shadow: var(--neutral-shadow);
+}
+
+.portal-theme .game-card h2 {
+  margin: 14px 0 4px;
+  color: var(--neutral-text);
+}
+
+.portal-theme .game-card h3 {
+  margin: 0 0 16px;
+  color: var(--neutral-primary);
+  font-size: 1rem;
+}
+
+.portal-theme .game-card p {
+  color: var(--neutral-muted);
+  line-height: 1.8;
+}
+
+.portal-theme .status-badge {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.portal-theme .status-badge.open {
+  color: #ffffff;
+  background: #16a34a;
+}
+
+.portal-theme .status-badge.planned {
+  color: #475569;
+  background: #e2e8f0;
+}
+
+.portal-theme .game-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+/* 總站 Footer */
+
+.portal-theme .site-footer {
+  margin-top: 0;
+  background: #ffffff;
+  border-top: 1px solid var(--neutral-border);
+  color: var(--neutral-text);
+  box-shadow: 0 -8px 30px rgba(15, 23, 42, 0.04);
+}
+
+.portal-theme .site-footer h3 {
+  color: var(--neutral-text);
+}
+
+.portal-theme .site-footer p,
+.portal-theme .footer-disclaimer {
+  color: var(--neutral-muted);
+}
+
+.portal-theme .footer-links button {
+  color: var(--neutral-muted);
+  background: #ffffff;
+  border: 1px solid var(--neutral-border);
+}
+
+.portal-theme .footer-links button:hover {
+  color: var(--neutral-primary);
+  background: var(--neutral-primary-soft);
+  border-color: #bfdbfe;
+}
+
+/* Responsive */
+
+@media (max-width: 980px) {
+  .portal-theme .main-nav {
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid var(--neutral-border);
+  }
+
+  .portal-theme .portal-home {
+    padding: 48px 18px 64px;
+  }
+
+  .portal-theme .portal-hero {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .portal-theme .portal-showcase {
+    min-height: auto;
+  }
+
+  .portal-theme .showcase-stack {
+    position: static;
+    margin-top: 14px;
+  }
+
+  .portal-theme .portal-game-grid,
+  .portal-theme .game-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .portal-theme .portal-hero h1 {
+    font-size: 42px;
+  }
+
+  .portal-theme .portal-lead {
+    font-size: 15px;
+  }
+
+  .portal-theme .portal-actions,
+  .portal-theme .game-card-actions {
+    flex-direction: column;
+  }
+
+  .portal-theme .portal-btn,
+  .portal-theme .game-card button {
+    width: 100%;
+  }
+
+  .portal-theme .showcase-stack {
+    grid-template-columns: 1fr;
+  }
+
+  .portal-theme .planned-games li {
+    flex-direction: column;
+  }
+}
