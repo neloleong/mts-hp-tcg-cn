@@ -10,28 +10,8 @@ function UnionArenaHomePage({ navigate }) {
 
             <p>
               這裡整理 UNION ARENA 日文版卡牌資料、商品系列、卡牌圖片索引與搜尋篩選。
-              目前已完成 106 個商品、8036 張卡牌資料的本地下載整理。
+              以玩家查詢、資料整理、收藏參考和社群交流為主要方向。
             </p>
-          </div>
-
-          <div className="ua-home-stats">
-            <div className="ua-home-stat-card">
-              <span>Products</span>
-              <strong>106</strong>
-              <p>已整理商品</p>
-            </div>
-
-            <div className="ua-home-stat-card">
-              <span>Cards</span>
-              <strong>8036</strong>
-              <p>已下載卡牌</p>
-            </div>
-
-            <div className="ua-home-stat-card">
-              <span>Images</span>
-              <strong>6352</strong>
-              <p>Unique 圖片檔</p>
-            </div>
           </div>
 
           <div className="feature-grid ua-home-feature-grid">
@@ -53,7 +33,8 @@ function UnionArenaHomePage({ navigate }) {
             <article className="feature-card">
               <h2>商品情報</h2>
               <p>
-                從已下載卡牌資料中自動整理收錄商品，方便之後建立商品頁和系列頁。
+                整理 UNION ARENA 相關商品、系列資料和收錄資訊，
+                方便玩家查閱不同商品內容。
               </p>
               <button
                 type="button"
@@ -109,7 +90,7 @@ function UnionArenaHomePage({ navigate }) {
             <article className="feature-card">
               <h2>關於本站</h2>
               <p>
-                記錄 UNION ARENA 資料來源、下載方式、圖片處理和未來接入資料庫的方向。
+                記錄 UNION ARENA 資料來源、整理方向、非官方聲明和未來接入資料庫的方向。
               </p>
               <button
                 type="button"
