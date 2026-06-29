@@ -16,6 +16,9 @@ import HarryPotterAboutPage from "./pages/harry-potter/HarryPotterAboutPage";
 import UnionArenaHomePage from "./pages/union-arena/UnionArenaHomePage";
 import UnionArenaCardListPage from "./pages/union-arena/UnionArenaCardListPage";
 import UnionArenaProductPage from "./pages/union-arena/UnionArenaProductPage";
+import UnionArenaNewsPage from "./pages/union-arena/UnionArenaNewsPage";
+import UnionArenaEventPage from "./pages/union-arena/UnionArenaEventPage";
+import UnionArenaDeckPage from "./pages/union-arena/UnionArenaDeckPage";
 import UnionArenaAboutPage from "./pages/union-arena/UnionArenaAboutPage";
 
 import { recordVisit } from "./utils/visitorTracker";
@@ -38,6 +41,9 @@ const ROUTES = {
   UNION_ARENA_HOME: UA_BASE,
   UNION_ARENA_CARDS: `${UA_BASE}/cards`,
   UNION_ARENA_PRODUCTS: `${UA_BASE}/products`,
+  UNION_ARENA_NEWS: `${UA_BASE}/news`,
+  UNION_ARENA_EVENTS: `${UA_BASE}/events`,
+  UNION_ARENA_DECKS: `${UA_BASE}/decks`,
   UNION_ARENA_ABOUT: `${UA_BASE}/about`
 };
 
@@ -54,6 +60,9 @@ const legacyPageMap = {
   "union-arena": ROUTES.UNION_ARENA_HOME,
   "union-arena-cards": ROUTES.UNION_ARENA_CARDS,
   "union-arena-products": ROUTES.UNION_ARENA_PRODUCTS,
+  "union-arena-news": ROUTES.UNION_ARENA_NEWS,
+  "union-arena-events": ROUTES.UNION_ARENA_EVENTS,
+  "union-arena-decks": ROUTES.UNION_ARENA_DECKS,
   "union-arena-about": ROUTES.UNION_ARENA_ABOUT
 };
 
@@ -71,7 +80,10 @@ const pageTitles = {
 
   [ROUTES.UNION_ARENA_HOME]: "UNION ARENA",
   [ROUTES.UNION_ARENA_CARDS]: "UNION ARENA 卡牌列表",
-  [ROUTES.UNION_ARENA_PRODUCTS]: "UNION ARENA 商品列表",
+  [ROUTES.UNION_ARENA_PRODUCTS]: "UNION ARENA 商品情報",
+  [ROUTES.UNION_ARENA_NEWS]: "UNION ARENA 新聞",
+  [ROUTES.UNION_ARENA_EVENTS]: "UNION ARENA 活動",
+  [ROUTES.UNION_ARENA_DECKS]: "UNION ARENA 牌組",
   [ROUTES.UNION_ARENA_ABOUT]: "關於 UNION ARENA 資料庫"
 };
 
@@ -185,6 +197,9 @@ function App() {
       ),
       [ROUTES.UNION_ARENA_CARDS]: <UnionArenaCardListPage />,
       [ROUTES.UNION_ARENA_PRODUCTS]: <UnionArenaProductPage />,
+      [ROUTES.UNION_ARENA_NEWS]: <UnionArenaNewsPage />,
+      [ROUTES.UNION_ARENA_EVENTS]: <UnionArenaEventPage />,
+      [ROUTES.UNION_ARENA_DECKS]: <UnionArenaDeckPage />,
       [ROUTES.UNION_ARENA_ABOUT]: <UnionArenaAboutPage />
     };
 
