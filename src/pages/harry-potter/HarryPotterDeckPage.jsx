@@ -3,9 +3,9 @@
 import { useMemo, useRef, useState } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import CardModal from "../components/CardModal";
-import { sampleCards } from "../data/cards";
-import { products } from "../data/products";
+import CardModal from "../../components/CardModal";
+import { sampleCards } from "../../data/cards";
+import { products } from "../../data/products";
 import {
   MAIN_DECK_LIMIT,
   SAME_CARD_LIMIT,
@@ -28,7 +28,7 @@ import {
   getTypeDistribution,
   isMpCard,
   isPartnerCard
-} from "../utils/deckUtils";
+} from "../../utils/deckUtils";
 
 function normalizeTags(value) {
   if (Array.isArray(value)) return value;

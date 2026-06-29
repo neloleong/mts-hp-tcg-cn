@@ -1,4 +1,4 @@
-import { sampleCards } from "../data/cards";
+import { sampleCards } from "../../data/cards";
 
 function HomePage({ setPage }) {
   const latestCards = sampleCards.slice(0, 6);

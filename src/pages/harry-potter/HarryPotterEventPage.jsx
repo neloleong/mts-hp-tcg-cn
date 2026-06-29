@@ -1,4 +1,4 @@
-import { events } from "../data/events";
+import { events } from "../../data/events";
 
 function EventPage() {
   return (

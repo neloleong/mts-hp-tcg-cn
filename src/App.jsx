@@ -1,63 +1,142 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-import PortalHomePage from "./pages/PortalHomePage";
-import GameSelectPage from "./pages/GameSelectPage";
+import PortalHomePage from "./pages/portal/PortalHomePage";
+import GameSelectPage from "./pages/portal/GameSelectPage";
 
-import HomePage from "./pages/HomePage";
-import CardListPage from "./pages/CardListPage";
-import ProductPage from "./pages/ProductPage";
-import NewsPage from "./pages/NewsPage";
-import EventPage from "./pages/EventPage";
-import DeckPage from "./pages/DeckPage";
-import AboutPage from "./pages/AboutPage";
+import HarryPotterHomePage from "./pages/harry-potter/HarryPotterHomePage";
+import HarryPotterCardListPage from "./pages/harry-potter/HarryPotterCardListPage";
+import HarryPotterProductPage from "./pages/harry-potter/HarryPotterProductPage";
+import HarryPotterNewsPage from "./pages/harry-potter/HarryPotterNewsPage";
+import HarryPotterEventPage from "./pages/harry-potter/HarryPotterEventPage";
+import HarryPotterDeckPage from "./pages/harry-potter/HarryPotterDeckPage";
+import HarryPotterAboutPage from "./pages/harry-potter/HarryPotterAboutPage";
+
+import UnionArenaHomePage from "./pages/union-arena/UnionArenaHomePage";
+import UnionArenaCardListPage from "./pages/union-arena/UnionArenaCardListPage";
+import UnionArenaProductPage from "./pages/union-arena/UnionArenaProductPage";
+import UnionArenaAboutPage from "./pages/union-arena/UnionArenaAboutPage";
 
 import { recordVisit } from "./utils/visitorTracker";
 
 const HP_BASE = "games/harry-potter";
+const UA_BASE = "games/union-arena";
 
-const validPages = [
-  "home",
-  "games",
+const ROUTES = {
+  PORTAL_HOME: "home",
+  GAME_SELECT: "games",
 
-  HP_BASE,
-  `${HP_BASE}/cards`,
-  `${HP_BASE}/products`,
-  `${HP_BASE}/news`,
-  `${HP_BASE}/events`,
-  `${HP_BASE}/decks`,
-  `${HP_BASE}/about`
-];
+  HARRY_POTTER_HOME: HP_BASE,
+  HARRY_POTTER_CARDS: `${HP_BASE}/cards`,
+  HARRY_POTTER_PRODUCTS: `${HP_BASE}/products`,
+  HARRY_POTTER_NEWS: `${HP_BASE}/news`,
+  HARRY_POTTER_EVENTS: `${HP_BASE}/events`,
+  HARRY_POTTER_DECKS: `${HP_BASE}/decks`,
+  HARRY_POTTER_ABOUT: `${HP_BASE}/about`,
+
+  UNION_ARENA_HOME: UA_BASE,
+  UNION_ARENA_CARDS: `${UA_BASE}/cards`,
+  UNION_ARENA_PRODUCTS: `${UA_BASE}/products`,
+  UNION_ARENA_ABOUT: `${UA_BASE}/about`
+};
+
+const validPages = Object.values(ROUTES);
 
 const legacyPageMap = {
-  cards: `${HP_BASE}/cards`,
-  products: `${HP_BASE}/products`,
-  news: `${HP_BASE}/news`,
-  events: `${HP_BASE}/events`,
-  decks: `${HP_BASE}/decks`,
-  about: `${HP_BASE}/about`
+  cards: ROUTES.HARRY_POTTER_CARDS,
+  products: ROUTES.HARRY_POTTER_PRODUCTS,
+  news: ROUTES.HARRY_POTTER_NEWS,
+  events: ROUTES.HARRY_POTTER_EVENTS,
+  decks: ROUTES.HARRY_POTTER_DECKS,
+  about: ROUTES.HARRY_POTTER_ABOUT,
+
+  "union-arena": ROUTES.UNION_ARENA_HOME,
+  "union-arena-cards": ROUTES.UNION_ARENA_CARDS,
+  "union-arena-products": ROUTES.UNION_ARENA_PRODUCTS,
+  "union-arena-about": ROUTES.UNION_ARENA_ABOUT
+};
+
+const pageTitles = {
+  [ROUTES.PORTAL_HOME]: "總首頁",
+  [ROUTES.GAME_SELECT]: "遊戲列表",
+
+  [ROUTES.HARRY_POTTER_HOME]: "Harry Potter TCG",
+  [ROUTES.HARRY_POTTER_CARDS]: "Harry Potter TCG 卡牌列表",
+  [ROUTES.HARRY_POTTER_PRODUCTS]: "Harry Potter TCG 商品情報",
+  [ROUTES.HARRY_POTTER_NEWS]: "Harry Potter TCG 新聞",
+  [ROUTES.HARRY_POTTER_EVENTS]: "Harry Potter TCG 活動",
+  [ROUTES.HARRY_POTTER_DECKS]: "Harry Potter TCG 牌組",
+  [ROUTES.HARRY_POTTER_ABOUT]: "關於 Harry Potter TCG 資料庫",
+
+  [ROUTES.UNION_ARENA_HOME]: "UNION ARENA",
+  [ROUTES.UNION_ARENA_CARDS]: "UNION ARENA 卡牌列表",
+  [ROUTES.UNION_ARENA_PRODUCTS]: "UNION ARENA 商品列表",
+  [ROUTES.UNION_ARENA_ABOUT]: "關於 UNION ARENA 資料庫"
 };
 
 function normalizeRoute(route) {
-  if (!route) return "home";
+  if (!route) return ROUTES.PORTAL_HOME;
 
-  const cleanRoute = route.replace(/^#/, "").trim();
+  const cleanRoute = String(route)
+    .replace(/^#/, "")
+    .replace(/^\/+/, "")
+    .replace(/\/+$/, "")
+    .trim();
+
+  if (!cleanRoute) return ROUTES.PORTAL_HOME;
 
   if (legacyPageMap[cleanRoute]) {
     return legacyPageMap[cleanRoute];
   }
 
-  return validPages.includes(cleanRoute) ? cleanRoute : "home";
+  return validPages.includes(cleanRoute) ? cleanRoute : ROUTES.PORTAL_HOME;
 }
 
 function parseHash() {
-  const hash = window.location.hash.replace("#", "").trim();
-  return normalizeRoute(hash);
+  return normalizeRoute(window.location.hash);
+}
+
+function toHashPath(pageId) {
+  const route = normalizeRoute(pageId);
+  return `#/${route}`;
+}
+
+function isHarryPotterRoute(pageId) {
+  return pageId === HP_BASE || pageId.startsWith(`${HP_BASE}/`);
+}
+
+function isUnionArenaRoute(pageId) {
+  return pageId === UA_BASE || pageId.startsWith(`${UA_BASE}/`);
+}
+
+function getShellClassName(currentPage) {
+  if (isHarryPotterRoute(currentPage)) {
+    return "app-shell hp-theme";
+  }
+
+  if (isUnionArenaRoute(currentPage)) {
+    return "app-shell union-arena-theme";
+  }
+
+  return "app-shell portal-theme";
 }
 
 function App() {
-  const [currentPage, setCurrentPage] = useState(parseHash());
+  const [currentPage, setCurrentPage] = useState(parseHash);
+
+  const navigate = useCallback((pageId) => {
+    const route = normalizeRoute(pageId);
+    const nextHash = toHashPath(route);
+
+    if (window.location.hash === nextHash) {
+      setCurrentPage(route);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    window.location.hash = `/${route}`;
+  }, []);
 
   useEffect(() => {
     function handleHashChange() {
@@ -69,62 +148,57 @@ function App() {
     window.addEventListener("hashchange", handleHashChange);
 
     if (!window.location.hash) {
-      window.location.hash = "home";
+      window.location.hash = `/${ROUTES.PORTAL_HOME}`;
+    } else {
+      handleHashChange();
     }
 
-    return () => window.removeEventListener("hashchange", handleHashChange);
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
   }, []);
 
   useEffect(() => {
-    const titles = {
-      home: "總首頁",
-      games: "遊戲列表",
+    const title = pageTitles[currentPage] || pageTitles[ROUTES.PORTAL_HOME];
 
-      [HP_BASE]: "Harry Potter TCG",
-      [`${HP_BASE}/cards`]: "Harry Potter TCG 卡牌列表",
-      [`${HP_BASE}/products`]: "Harry Potter TCG 商品情報",
-      [`${HP_BASE}/news`]: "Harry Potter TCG 新聞",
-      [`${HP_BASE}/events`]: "Harry Potter TCG 活動",
-      [`${HP_BASE}/decks`]: "Harry Potter TCG 牌組",
-      [`${HP_BASE}/about`]: "關於 Harry Potter TCG 資料庫"
-    };
-
-    document.title = `${titles[currentPage] || "總首頁"}｜MTS' Card Game Library`;
+    document.title = `${title}｜MTS' Card Game Library`;
     recordVisit(document.title);
   }, [currentPage]);
 
-  function navigate(pageId) {
-    const route = normalizeRoute(pageId);
-    window.location.hash = route;
-  }
-
   const page = useMemo(() => {
     const pageMap = {
-      home: <PortalHomePage navigate={navigate} />,
-      games: <GameSelectPage navigate={navigate} />,
+      [ROUTES.PORTAL_HOME]: <PortalHomePage navigate={navigate} />,
+      [ROUTES.GAME_SELECT]: <GameSelectPage navigate={navigate} />,
 
-      [HP_BASE]: <HomePage navigate={navigate} />,
-      [`${HP_BASE}/cards`]: <CardListPage />,
-      [`${HP_BASE}/products`]: <ProductPage />,
-      [`${HP_BASE}/news`]: <NewsPage />,
-      [`${HP_BASE}/events`]: <EventPage />,
-      [`${HP_BASE}/decks`]: <DeckPage />,
-      [`${HP_BASE}/about`]: <AboutPage />
+      [ROUTES.HARRY_POTTER_HOME]: (
+        <HarryPotterHomePage navigate={navigate} />
+      ),
+      [ROUTES.HARRY_POTTER_CARDS]: <HarryPotterCardListPage />,
+      [ROUTES.HARRY_POTTER_PRODUCTS]: <HarryPotterProductPage />,
+      [ROUTES.HARRY_POTTER_NEWS]: <HarryPotterNewsPage />,
+      [ROUTES.HARRY_POTTER_EVENTS]: <HarryPotterEventPage />,
+      [ROUTES.HARRY_POTTER_DECKS]: <HarryPotterDeckPage />,
+      [ROUTES.HARRY_POTTER_ABOUT]: <HarryPotterAboutPage />,
+
+      [ROUTES.UNION_ARENA_HOME]: (
+        <UnionArenaHomePage navigate={navigate} />
+      ),
+      [ROUTES.UNION_ARENA_CARDS]: <UnionArenaCardListPage />,
+      [ROUTES.UNION_ARENA_PRODUCTS]: <UnionArenaProductPage />,
+      [ROUTES.UNION_ARENA_ABOUT]: <UnionArenaAboutPage />
     };
 
-    return pageMap[currentPage] || pageMap.home;
-  }, [currentPage]);
+    return pageMap[currentPage] || pageMap[ROUTES.PORTAL_HOME];
+  }, [currentPage, navigate]);
 
-  const isHarryPotterSection = currentPage.startsWith(HP_BASE);
-
-  const shellClassName = isHarryPotterSection
-    ? "app-shell hp-theme"
-    : "app-shell portal-theme";
+  const shellClassName = getShellClassName(currentPage);
 
   return (
     <div className={shellClassName}>
       <Header currentPage={currentPage} navigate={navigate} />
+
       <main>{page}</main>
+
       <Footer navigate={navigate} currentPage={currentPage} />
     </div>
   );

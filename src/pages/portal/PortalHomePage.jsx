@@ -1,4 +1,4 @@
-import { games } from "../data/games";
+import { games } from "../../data/games";
 
 function PortalHomePage({ navigate }) {
   const openedGames = games.filter((game) => game.status === "已開放");

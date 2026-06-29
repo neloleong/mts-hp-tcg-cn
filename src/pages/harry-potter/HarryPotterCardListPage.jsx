@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
-import CardGrid from "../components/CardGrid";
-import CardModal from "../components/CardModal";
-import { rarities, seriesOptions, sampleCards } from "../data/cards";
-import { products } from "../data/products";
-import { hasSupabaseConfig, supabase } from "../lib/supabaseClient";
+import CardGrid from "../../components/CardGrid";
+import CardModal from "../../components/CardModal";
+import { rarities, seriesOptions, sampleCards } from "../../data/cards";
+import { products } from "../../data/products";
+import { hasSupabaseConfig, supabase } from "../../lib/supabaseClient";
 
 const CARD_TYPE_OPTIONS = ["全部", "角色卡", "事件卡", "道具卡", "地點卡", "Magic 卡", "夥伴卡"];
 

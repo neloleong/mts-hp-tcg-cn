@@ -10,6 +10,16 @@ export const games = [
     cardsRoute: "games/harry-potter/cards"
   },
   {
+    id: "union-arena",
+    title: "UNION ARENA",
+    titleZh: "UNION ARENA 日文版卡牌資料庫",
+    status: "已開放",
+    description:
+      "整理 UNION ARENA 日文版卡牌資料、收錄商品、卡圖索引與搜尋篩選功能。",
+    route: "games/union-arena",
+    cardsRoute: "games/union-arena/cards"
+  },
+  {
     id: "pokemon",
     title: "Pokémon TCG",
     titleZh: "寶可夢集換式卡牌遊戲",

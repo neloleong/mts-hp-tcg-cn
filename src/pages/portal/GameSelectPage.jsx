@@ -1,4 +1,4 @@
-import { games } from "../data/games";
+import { games } from "../../data/games";
 
 function GameSelectPage({ navigate }) {
   return (
@@ -7,7 +7,7 @@ function GameSelectPage({ navigate }) {
         <p className="eyebrow">Game Index</p>
         <h1>卡牌遊戲列表</h1>
         <p>
-          這裡是所有卡牌遊戲資料庫的入口。已開放的遊戲可以直接進入，
+          這裡是 MTS&apos; Card Game Library 的遊戲入口。已開放的遊戲可以直接進入，
           規劃中的遊戲之後可以逐步新增卡牌列表、商品情報、新聞、活動和牌組資料。
         </p>
       </div>
@@ -19,7 +19,11 @@ function GameSelectPage({ navigate }) {
           return (
             <article className="game-card" key={game.id}>
               <div className="game-card-top">
-                <span className={isOpen ? "status-badge open" : "status-badge planned"}>
+                <span
+                  className={
+                    isOpen ? "status-badge open" : "status-badge planned"
+                  }
+                >
                   {game.status}
                 </span>
               </div>
