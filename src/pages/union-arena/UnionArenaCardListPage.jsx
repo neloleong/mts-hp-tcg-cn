@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
+import UnionArenaCardModal from "../../components/union-arena/UnionArenaCardModal";
 
-const CARD_DATA_URL = "/data/union-arena-jp/cards.json";
-
+const CARD_DATA_URL = "/data/union-arena-jp/cards.zh.json";
 const ALL_VALUE = "all";
 
 function safeText(value) {
@@ -9,105 +9,12 @@ function safeText(value) {
   return String(value).trim();
 }
 
-function pickFirst(row, keys, fallback = "") {
-  for (const key of keys) {
-    if (row && row[key] !== null && row[key] !== undefined && row[key] !== "") {
-      return row[key];
-    }
-  }
-
-  return fallback;
-}
-
-function normalizeUnionArenaCard(row, index) {
-  const cardNo = safeText(
-    pickFirst(row, [
-      "card_no",
-      "cardNo",
-      "card_number",
-      "cardNumber",
-      "number",
-      "no"
-    ])
-  );
-
-  const productId = safeText(
-    pickFirst(row, ["product_id", "productId", "product", "product_code"])
-  );
-
-  const productName = safeText(
-    pickFirst(row, [
-      "product_name",
-      "productName",
-      "product_title",
-      "productTitle",
-      "title"
-    ])
-  );
-
-  const imageFile = safeText(
-    pickFirst(row, [
-      "image_file",
-      "imageFile",
-      "image_path",
-      "imagePath",
-      "local_image",
-      "localImage"
-    ])
-  );
-
-  const imageUrl = safeText(
-    pickFirst(row, ["image_url", "imageUrl", "image", "img"])
-  );
-
-  return {
-    id:
-      safeText(pickFirst(row, ["id", "card_id", "cardId"])) ||
-      `${productId || "ua"}-${cardNo || index}`,
-    cardNo,
-    name: safeText(
-      pickFirst(row, [
-        "name",
-        "card_name",
-        "cardName",
-        "name_jp",
-        "nameJp",
-        "name_ja",
-        "nameJa"
-      ], "未命名卡牌")
-    ),
-    productId,
-    productName,
-    rarity: safeText(pickFirst(row, ["rarity", "rare", "rarity_text"])),
-    cardType: safeText(
-      pickFirst(row, ["card_type", "cardType", "type", "category"])
-    ),
-    color: safeText(pickFirst(row, ["color", "colour"])),
-    cost: safeText(pickFirst(row, ["cost", "energy", "need_energy"])),
-    bp: safeText(pickFirst(row, ["bp", "power", "battle_point"])),
-    ap: safeText(pickFirst(row, ["ap", "action_point"])),
-    effect: safeText(
-      pickFirst(row, [
-        "effect",
-        "effect_text",
-        "effectText",
-        "description",
-        "text"
-      ])
-    ),
-    imageFile,
-    imageUrl,
-    raw: row
-  };
-}
-
 function getImageSrc(card) {
-  if (card.imageUrl && /^https?:\/\//i.test(card.imageUrl)) {
-    return card.imageUrl;
-  }
+  const imageFile = safeText(card.imageFile);
+  const imageUrl = safeText(card.imageUrl);
 
-  if (card.imageFile) {
-    const normalizedPath = card.imageFile.replace(/\\/g, "/");
+  if (imageFile) {
+    const normalizedPath = imageFile.replace(/\\/g, "/");
 
     if (normalizedPath.startsWith("/")) {
       return normalizedPath;
@@ -117,10 +24,6 @@ function getImageSrc(card) {
       return `/${normalizedPath}`;
     }
 
-    if (normalizedPath.startsWith("union-arena-jp/")) {
-      return `/data/${normalizedPath}`;
-    }
-
     if (normalizedPath.startsWith("images/")) {
       return `/data/union-arena-jp/${normalizedPath}`;
     }
@@ -128,34 +31,103 @@ function getImageSrc(card) {
     return `/data/union-arena-jp/images/${normalizedPath.split("/").pop()}`;
   }
 
-  if (card.imageUrl) {
-    return card.imageUrl;
+  if (imageUrl) {
+    return imageUrl;
   }
 
   return "";
 }
 
-function buildOptions(cards, key, labelKey) {
+function buildOptions(cards, getter, defaultLabel = "全部") {
   const map = new Map();
 
   cards.forEach((card) => {
-    const value = card[key];
+    const raw = getter(card);
+    const value = safeText(raw);
 
     if (!value) return;
 
-    const label = labelKey ? card[labelKey] || value : value;
-
     if (!map.has(value)) {
-      map.set(value, label);
+      map.set(value, value);
     }
   });
 
   return [
-    { value: ALL_VALUE, label: "全部" },
+    { value: ALL_VALUE, label: defaultLabel },
     ...Array.from(map.entries())
       .map(([value, label]) => ({ value, label }))
       .sort((a, b) => a.label.localeCompare(b.label, "ja"))
   ];
+}
+
+function buildProductOptions(cards) {
+  const map = new Map();
+
+  cards.forEach((card) => {
+    const id = safeText(card.productId || card.productCode);
+    const label = safeText(card.productNameZh || card.productNameJp || id);
+
+    if (!id) return;
+
+    if (!map.has(id)) {
+      map.set(id, label);
+    }
+  });
+
+  return [
+    { value: ALL_VALUE, label: "全部商品" },
+    ...Array.from(map.entries())
+      .map(([value, label]) => ({ value, label }))
+      .sort((a, b) => a.label.localeCompare(b.label, "ja"))
+  ];
+}
+
+function normalizeCard(row, index) {
+  return {
+    id: safeText(row.id) || safeText(row.cardNo) || `ua-card-${index}`,
+    productId: safeText(row.productId),
+    productCode: safeText(row.productCode),
+    productNameJp: safeText(row.productNameJp),
+    productNameZh: safeText(row.productNameZh),
+
+    cardNo: safeText(row.cardNo),
+    cardCode: safeText(row.cardCode),
+
+    nameJp: safeText(row.nameJp),
+    nameKanaJp: safeText(row.nameKanaJp),
+    nameZh: safeText(row.nameZh),
+
+    rarity: safeText(row.rarity),
+
+    cardTypeJp: safeText(row.cardTypeJp),
+    cardTypeZh: safeText(row.cardTypeZh),
+
+    colorJp: safeText(row.colorJp),
+    colorZh: safeText(row.colorZh),
+
+    cost: safeText(row.cost),
+    ap: safeText(row.ap),
+    bp: safeText(row.bp),
+    generatedEnergy: safeText(row.generatedEnergy),
+
+    featureJp: safeText(row.featureJp),
+    featureZh: safeText(row.featureZh),
+
+    effectJp: safeText(row.effectJp),
+    effectZh: safeText(row.effectZh),
+
+    triggerJp: safeText(row.triggerJp),
+    triggerZh: safeText(row.triggerZh),
+    triggerTypeZh: safeText(row.triggerTypeZh),
+
+    imageFile: safeText(row.imageFile),
+    imageUrl: safeText(row.imageUrl),
+    sourceUrl: safeText(row.sourceUrl),
+
+    enrichedStatus: safeText(row.enrichedStatus),
+    translationStatus: safeText(row.translationStatus),
+    searchText: safeText(row.searchText)
+  };
 }
 
 function UnionArenaCardListPage() {
@@ -167,7 +139,7 @@ function UnionArenaCardListPage() {
   const [productId, setProductId] = useState(ALL_VALUE);
   const [rarity, setRarity] = useState(ALL_VALUE);
   const [cardType, setCardType] = useState(ALL_VALUE);
-  const [color, setColor] = useState(ALL_VALUE);
+  const [feature, setFeature] = useState(ALL_VALUE);
   const [selectedCard, setSelectedCard] = useState(null);
 
   useEffect(() => {
@@ -187,19 +159,20 @@ function UnionArenaCardListPage() {
         const data = await response.json();
 
         if (!Array.isArray(data)) {
-          throw new Error("cards.json 格式不是 array");
+          throw new Error("cards.zh.json 格式不是 array");
         }
 
         if (!cancelled) {
-          setCards(data.map(normalizeUnionArenaCard));
+          setCards(data.map(normalizeCard));
         }
       } catch (error) {
+        console.error("Failed to load UNION ARENA cards:", error);
+
         if (!cancelled) {
           setCards([]);
           setLoadError(
-            "讀取 UNION ARENA cards.json 失敗。請確認 public/data/union-arena-jp/cards.json 已存在。"
+            "讀取 UNION ARENA cards.zh.json 失敗。請確認 public/data/union-arena-jp/cards.zh.json 已存在。"
           );
-          console.error("Failed to load UNION ARENA cards:", error);
         }
       } finally {
         if (!cancelled) {
@@ -215,23 +188,30 @@ function UnionArenaCardListPage() {
     };
   }, []);
 
-  const productOptions = useMemo(
-    () => buildOptions(cards, "productId", "productName"),
-    [cards]
-  );
+  const productOptions = useMemo(() => buildProductOptions(cards), [cards]);
 
   const rarityOptions = useMemo(
-    () => buildOptions(cards, "rarity"),
+    () => buildOptions(cards, (card) => card.rarity, "全部稀有度"),
     [cards]
   );
 
   const typeOptions = useMemo(
-    () => buildOptions(cards, "cardType"),
+    () =>
+      buildOptions(
+        cards,
+        (card) => card.cardTypeZh || card.cardTypeJp,
+        "全部類型"
+      ),
     [cards]
   );
 
-  const colorOptions = useMemo(
-    () => buildOptions(cards, "color"),
+  const featureOptions = useMemo(
+    () =>
+      buildOptions(
+        cards,
+        (card) => card.featureZh || card.featureJp,
+        "全部特徵"
+      ),
     [cards]
   );
 
@@ -239,48 +219,59 @@ function UnionArenaCardListPage() {
     const q = keyword.trim().toLowerCase();
 
     return cards.filter((card) => {
-      const searchableText = [
+      const searchText = [
+        card.searchText,
         card.cardNo,
-        card.name,
-        card.productId,
-        card.productName,
+        card.cardCode,
+        card.productCode,
+        card.productNameJp,
+        card.productNameZh,
+        card.nameJp,
+        card.nameKanaJp,
+        card.nameZh,
         card.rarity,
-        card.cardType,
-        card.color,
-        card.cost,
-        card.bp,
-        card.ap,
-        card.effect
+        card.cardTypeJp,
+        card.cardTypeZh,
+        card.featureJp,
+        card.featureZh,
+        card.effectJp,
+        card.effectZh,
+        card.triggerJp,
+        card.triggerZh
       ]
         .join(" ")
         .toLowerCase();
 
-      const matchKeyword = !q || searchableText.includes(q);
+      const matchKeyword = !q || searchText.includes(q);
       const matchProduct =
-        productId === ALL_VALUE || card.productId === productId;
-      const matchRarity =
-        rarity === ALL_VALUE || card.rarity === rarity;
-      const matchType =
-        cardType === ALL_VALUE || card.cardType === cardType;
-      const matchColor =
-        color === ALL_VALUE || card.color === color;
+        productId === ALL_VALUE ||
+        card.productId === productId ||
+        card.productCode === productId;
+
+      const matchRarity = rarity === ALL_VALUE || card.rarity === rarity;
+
+      const currentType = card.cardTypeZh || card.cardTypeJp;
+      const matchType = cardType === ALL_VALUE || currentType === cardType;
+
+      const currentFeature = card.featureZh || card.featureJp;
+      const matchFeature = feature === ALL_VALUE || currentFeature === feature;
 
       return (
         matchKeyword &&
         matchProduct &&
         matchRarity &&
         matchType &&
-        matchColor
+        matchFeature
       );
     });
-  }, [cards, keyword, productId, rarity, cardType, color]);
+  }, [cards, keyword, productId, rarity, cardType, feature]);
 
   function resetFilters() {
     setKeyword("");
     setProductId(ALL_VALUE);
     setRarity(ALL_VALUE);
     setCardType(ALL_VALUE);
-    setColor(ALL_VALUE);
+    setFeature(ALL_VALUE);
   }
 
   return (
@@ -289,40 +280,23 @@ function UnionArenaCardListPage() {
         <p className="eyebrow">UNION ARENA</p>
         <h1>卡牌列表</h1>
         <p>
-          目前使用本地 JSON 資料顯示 UNION ARENA 日文版卡牌。
-          建議先把下載完成的 cards.json 放到 public/data/union-arena-jp/cards.json。
+          搜尋 UNION ARENA 日文版卡牌資料。卡牌資料保留日文原文，
+          並加入中文欄位作玩家查詢與收藏參考。
         </p>
       </div>
 
-      <div className="ua-summary-grid">
-        <div className="ua-summary-card">
-          <span>資料總數</span>
-          <strong>{cards.length}</strong>
-        </div>
-
-        <div className="ua-summary-card">
-          <span>搜尋結果</span>
-          <strong>{filteredCards.length}</strong>
-        </div>
-
-        <div className="ua-summary-card">
-          <span>商品數</span>
-          <strong>{Math.max(productOptions.length - 1, 0)}</strong>
-        </div>
-      </div>
-
-      <div className="ua-filter-panel">
-        <label>
+      <div className="ua-filter-panel ua-card-search-panel">
+        <label className="ua-keyword-field">
           <span>關鍵字搜尋</span>
           <input
             value={keyword}
             onChange={(event) => setKeyword(event.target.value)}
-            placeholder="輸入卡名、卡號、商品、效果文字..."
+            placeholder="輸入卡名、卡號、商品、效果文字、特徵..."
           />
         </label>
 
         <label>
-          <span>收錄商品</span>
+          <span>商品</span>
           <select
             value={productId}
             onChange={(event) => setProductId(event.target.value)}
@@ -350,7 +324,7 @@ function UnionArenaCardListPage() {
         </label>
 
         <label>
-          <span>卡牌類型</span>
+          <span>類型</span>
           <select
             value={cardType}
             onChange={(event) => setCardType(event.target.value)}
@@ -364,12 +338,12 @@ function UnionArenaCardListPage() {
         </label>
 
         <label>
-          <span>顏色</span>
+          <span>特徵</span>
           <select
-            value={color}
-            onChange={(event) => setColor(event.target.value)}
+            value={feature}
+            onChange={(event) => setFeature(event.target.value)}
           >
-            {colorOptions.map((item) => (
+            {featureOptions.map((item) => (
               <option key={item.value} value={item.value}>
                 {item.label}
               </option>
@@ -387,7 +361,7 @@ function UnionArenaCardListPage() {
             className="secondary-btn"
             onClick={resetFilters}
           >
-            重設條件
+            重設
           </button>
         </div>
       </div>
@@ -411,7 +385,7 @@ function UnionArenaCardListPage() {
         </div>
       )}
 
-      <div className="ua-card-grid">
+      <div className="ua-card-grid ua-card-grid-rich">
         {filteredCards.map((card) => {
           const imageSrc = getImageSrc(card);
 
@@ -423,23 +397,51 @@ function UnionArenaCardListPage() {
             >
               <div className="ua-card-image">
                 {imageSrc ? (
-                  <img src={imageSrc} alt={card.name} loading="lazy" />
+                  <img src={imageSrc} alt={card.nameJp || card.cardNo} loading="lazy" />
                 ) : (
                   <span>No Image</span>
                 )}
               </div>
 
               <div className="ua-card-body">
-                <div className="ua-card-no">{card.cardNo || "No."}</div>
-                <h2>{card.name}</h2>
-
-                <div className="ua-card-meta">
-                  {card.rarity && <span>{card.rarity}</span>}
-                  {card.cardType && <span>{card.cardType}</span>}
-                  {card.color && <span>{card.color}</span>}
+                <div className="ua-card-topline">
+                  <span className="ua-card-no">{card.cardNo || "No."}</span>
+                  {card.rarity && (
+                    <span className="ua-rarity-badge">{card.rarity}</span>
+                  )}
                 </div>
 
-                <p>{card.productName || card.productId}</p>
+                <h2>{card.nameZh || card.nameJp || "未命名卡牌"}</h2>
+
+                {card.nameJp && card.nameZh !== card.nameJp && (
+                  <p className="ua-card-jp-name">{card.nameJp}</p>
+                )}
+
+                <div className="ua-card-meta">
+                  {(card.cardTypeZh || card.cardTypeJp) && (
+                    <span>{card.cardTypeZh || card.cardTypeJp}</span>
+                  )}
+
+                  {(card.featureZh || card.featureJp) && (
+                    <span>{card.featureZh || card.featureJp}</span>
+                  )}
+                </div>
+
+                <div className="ua-card-stats">
+                  {card.cost && <span>Cost {card.cost}</span>}
+                  {card.ap && <span>AP {card.ap}</span>}
+                  {card.bp && <span>BP {card.bp}</span>}
+                </div>
+
+                {(card.effectZh && card.effectZh !== "-") || card.triggerZh ? (
+                  <p className="ua-card-preview-text">
+                    {card.effectZh && card.effectZh !== "-"
+                      ? card.effectZh
+                      : card.triggerZh}
+                  </p>
+                ) : (
+                  <p className="ua-card-preview-text muted">無效果文字</p>
+                )}
               </div>
             </article>
           );
@@ -447,95 +449,10 @@ function UnionArenaCardListPage() {
       </div>
 
       {selectedCard && (
-        <div
-          className="ua-modal-backdrop"
-          onClick={(event) => {
-            if (event.target === event.currentTarget) {
-              setSelectedCard(null);
-            }
-          }}
-        >
-          <div className="ua-modal">
-            <button
-              type="button"
-              className="ua-modal-close"
-              onClick={() => setSelectedCard(null)}
-            >
-              ×
-            </button>
-
-            <div className="ua-modal-layout">
-              <div className="ua-modal-image">
-                {getImageSrc(selectedCard) ? (
-                  <img
-                    src={getImageSrc(selectedCard)}
-                    alt={selectedCard.name}
-                  />
-                ) : (
-                  <span>No Image</span>
-                )}
-              </div>
-
-              <div className="ua-modal-content">
-                <p className="eyebrow">UNION ARENA CARD</p>
-                <h2>{selectedCard.name}</h2>
-
-                <dl className="ua-detail-list">
-                  <div>
-                    <dt>卡號</dt>
-                    <dd>{selectedCard.cardNo || "-"}</dd>
-                  </div>
-
-                  <div>
-                    <dt>商品</dt>
-                    <dd>
-                      {selectedCard.productName ||
-                        selectedCard.productId ||
-                        "-"}
-                    </dd>
-                  </div>
-
-                  <div>
-                    <dt>稀有度</dt>
-                    <dd>{selectedCard.rarity || "-"}</dd>
-                  </div>
-
-                  <div>
-                    <dt>類型</dt>
-                    <dd>{selectedCard.cardType || "-"}</dd>
-                  </div>
-
-                  <div>
-                    <dt>顏色</dt>
-                    <dd>{selectedCard.color || "-"}</dd>
-                  </div>
-
-                  <div>
-                    <dt>Cost</dt>
-                    <dd>{selectedCard.cost || "-"}</dd>
-                  </div>
-
-                  <div>
-                    <dt>BP</dt>
-                    <dd>{selectedCard.bp || "-"}</dd>
-                  </div>
-
-                  <div>
-                    <dt>AP</dt>
-                    <dd>{selectedCard.ap || "-"}</dd>
-                  </div>
-                </dl>
-
-                {selectedCard.effect && (
-                  <div className="ua-effect-box">
-                    <h3>效果</h3>
-                    <p>{selectedCard.effect}</p>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
+        <UnionArenaCardModal
+          card={selectedCard}
+          onClose={() => setSelectedCard(null)}
+        />
       )}
     </section>
   );

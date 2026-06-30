@@ -3857,3 +3857,263 @@ main {
     font-size: 36px;
   }
 }
+
+/* =========================
+   UNION ARENA Card List / Modal
+   Only scoped under .union-arena-theme
+   ========================= */
+
+.union-arena-theme .ua-card-search-panel {
+  grid-template-columns: 2fr repeat(4, minmax(0, 1fr)) auto;
+}
+
+.union-arena-theme .ua-keyword-field input {
+  min-width: 260px;
+}
+
+.union-arena-theme .ua-card-grid-rich {
+  align-items: stretch;
+}
+
+.union-arena-theme .ua-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.union-arena-theme .ua-card-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.union-arena-theme .ua-card-no {
+  font-size: 12px;
+  color: #777;
+  font-weight: 700;
+}
+
+.union-arena-theme .ua-rarity-badge {
+  background: #e60000;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  padding: 4px 8px;
+}
+
+.union-arena-theme .ua-card-jp-name {
+  margin: -4px 0 10px;
+  color: #666;
+  font-size: 13px;
+}
+
+.union-arena-theme .ua-card-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.union-arena-theme .ua-card-stats span {
+  background: #111;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 8px;
+}
+
+.union-arena-theme .ua-card-preview-text {
+  margin: 10px 0 0;
+  color: #333;
+  font-size: 13px;
+  line-height: 1.65;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: pre-line;
+}
+
+.union-arena-theme .ua-card-preview-text.muted {
+  color: #999;
+}
+
+/* Modal */
+
+.union-arena-theme .ua-card-modal {
+  width: min(1180px, 100%);
+  max-height: 92vh;
+  overflow: auto;
+  background: #fff;
+  color: #111;
+  position: relative;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+.union-arena-theme .ua-card-modal-layout {
+  display: grid;
+  grid-template-columns: 390px minmax(0, 1fr);
+  gap: 32px;
+  padding: 32px;
+}
+
+.union-arena-theme .ua-card-modal-image-panel {
+  background: #f2f2f2;
+  padding: 18px;
+  border: 1px solid #e0e0e0;
+}
+
+.union-arena-theme .ua-card-modal-image {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 480px;
+}
+
+.union-arena-theme .ua-card-modal-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.union-arena-theme .ua-card-modal-content {
+  min-width: 0;
+}
+
+.union-arena-theme .ua-modal-heading {
+  border-left: 8px solid #e60000;
+  padding-left: 18px;
+  margin-bottom: 22px;
+}
+
+.union-arena-theme .ua-modal-heading h2 {
+  margin: 4px 0 8px;
+  color: #111;
+  font-size: 34px;
+  line-height: 1.18;
+  font-weight: 900;
+}
+
+.union-arena-theme .ua-modal-name-jp,
+.union-arena-theme .ua-modal-kana {
+  margin: 4px 0;
+  color: #666;
+}
+
+.union-arena-theme .ua-modal-kana {
+  font-size: 14px;
+}
+
+.union-arena-theme .ua-modal-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 16px;
+  margin: 0 0 24px;
+}
+
+.union-arena-theme .ua-modal-detail-row {
+  background: #f7f7f7;
+  border-left: 4px solid #e60000;
+  padding: 10px 12px;
+}
+
+.union-arena-theme .ua-modal-detail-row dt {
+  font-size: 12px;
+  color: #777;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.union-arena-theme .ua-modal-detail-row dd {
+  margin: 0;
+  color: #111;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.union-arena-theme .ua-rule-block {
+  margin: 16px 0;
+  padding: 18px 20px;
+  background: #f8f8f8;
+  border-left: 5px solid #e60000;
+}
+
+.union-arena-theme .ua-rule-block h3 {
+  margin: 0 0 10px;
+  color: #111;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.union-arena-theme .ua-rule-block p {
+  margin: 0;
+  white-space: pre-line;
+  color: #222;
+  line-height: 1.8;
+}
+
+.union-arena-theme .ua-rule-block.jp {
+  background: #fcfcfc;
+  border-left-color: #999;
+}
+
+.union-arena-theme .ua-rule-block.jp h3 {
+  color: #555;
+}
+
+.union-arena-theme .ua-rule-block.jp p {
+  color: #555;
+  font-size: 14px;
+}
+
+.union-arena-theme .ua-rule-block.trigger {
+  border-left-color: #111;
+}
+
+.union-arena-theme .ua-source-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 16px;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 900;
+  padding: 12px 18px;
+}
+
+.union-arena-theme .ua-source-link:hover {
+  background: #e60000;
+}
+
+@media (max-width: 1300px) {
+  .union-arena-theme .ua-card-search-panel {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .union-arena-theme .ua-keyword-field {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 900px) {
+  .union-arena-theme .ua-card-search-panel,
+  .union-arena-theme .ua-card-modal-layout,
+  .union-arena-theme .ua-modal-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .union-arena-theme .ua-card-modal-layout {
+    padding: 20px;
+  }
+
+  .union-arena-theme .ua-card-modal-image {
+    min-height: auto;
+  }
+
+  .union-arena-theme .ua-modal-heading h2 {
+    font-size: 28px;
+  }
+}
