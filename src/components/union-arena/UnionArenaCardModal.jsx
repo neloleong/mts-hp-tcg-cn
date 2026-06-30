@@ -4,9 +4,15 @@ function safeText(value) {
 }
 
 function getImageSrc(card) {
-  const imageFile = safeText(card.imageFile);
   const imageUrl = safeText(card.imageUrl);
+  const imageFile = safeText(card.imageFile);
 
+  // Vercel / GitHub 部署時，優先使用官方圖片 URL
+  if (imageUrl && /^https?:\/\//i.test(imageUrl)) {
+    return imageUrl;
+  }
+
+  // 本機有複製 images 時，才 fallback 到本地圖片
   if (imageFile) {
     const normalizedPath = imageFile.replace(/\\/g, "/");
 
@@ -23,10 +29,6 @@ function getImageSrc(card) {
     }
 
     return `/data/union-arena-jp/images/${normalizedPath.split("/").pop()}`;
-  }
-
-  if (imageUrl) {
-    return imageUrl;
   }
 
   return "";
@@ -114,28 +116,19 @@ function UnionArenaCardModal({ card, onClose }) {
               <DetailRow label="BP" value={card.bp} />
               <DetailRow label="發生能量" value={card.generatedEnergy} />
               <DetailRow label="特徵" value={card.featureZh || card.featureJp} />
-              <DetailRow label="收錄商品" value={card.productNameZh || card.productNameJp} />
+              <DetailRow
+                label="收錄商品"
+                value={card.productNameZh || card.productNameJp}
+              />
             </dl>
 
-            <TextBlock
-              title="效果"
-              text={card.effectZh}
-              variant="zh"
-            />
+            <TextBlock title="效果" text={card.effectZh} variant="zh" />
 
             {card.effectJp && card.effectJp !== card.effectZh && (
-              <TextBlock
-                title="日文原文"
-                text={card.effectJp}
-                variant="jp"
-              />
+              <TextBlock title="日文原文" text={card.effectJp} variant="jp" />
             )}
 
-            <TextBlock
-              title="Trigger"
-              text={card.triggerZh}
-              variant="trigger"
-            />
+            <TextBlock title="Trigger" text={card.triggerZh} variant="trigger" />
 
             {card.triggerJp && card.triggerJp !== card.triggerZh && (
               <TextBlock

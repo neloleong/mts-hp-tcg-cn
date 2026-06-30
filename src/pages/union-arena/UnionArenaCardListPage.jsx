@@ -10,9 +10,15 @@ function safeText(value) {
 }
 
 function getImageSrc(card) {
-  const imageFile = safeText(card.imageFile);
   const imageUrl = safeText(card.imageUrl);
+  const imageFile = safeText(card.imageFile);
 
+  // Vercel / GitHub 部署時，優先使用官方圖片 URL
+  if (imageUrl && /^https?:\/\//i.test(imageUrl)) {
+    return imageUrl;
+  }
+
+  // 本機有複製 images 時，才 fallback 到本地圖片
   if (imageFile) {
     const normalizedPath = imageFile.replace(/\\/g, "/");
 
@@ -31,10 +37,6 @@ function getImageSrc(card) {
     return `/data/union-arena-jp/images/${normalizedPath.split("/").pop()}`;
   }
 
-  if (imageUrl) {
-    return imageUrl;
-  }
-
   return "";
 }
 
@@ -42,8 +44,7 @@ function buildOptions(cards, getter, defaultLabel = "全部") {
   const map = new Map();
 
   cards.forEach((card) => {
-    const raw = getter(card);
-    const value = safeText(raw);
+    const value = safeText(getter(card));
 
     if (!value) return;
 
@@ -85,6 +86,7 @@ function buildProductOptions(cards) {
 function normalizeCard(row, index) {
   return {
     id: safeText(row.id) || safeText(row.cardNo) || `ua-card-${index}`,
+
     productId: safeText(row.productId),
     productCode: safeText(row.productCode),
     productNameJp: safeText(row.productNameJp),
@@ -232,6 +234,8 @@ function UnionArenaCardListPage() {
         card.rarity,
         card.cardTypeJp,
         card.cardTypeZh,
+        card.colorJp,
+        card.colorZh,
         card.featureJp,
         card.featureZh,
         card.effectJp,
@@ -243,6 +247,7 @@ function UnionArenaCardListPage() {
         .toLowerCase();
 
       const matchKeyword = !q || searchText.includes(q);
+
       const matchProduct =
         productId === ALL_VALUE ||
         card.productId === productId ||
@@ -397,7 +402,11 @@ function UnionArenaCardListPage() {
             >
               <div className="ua-card-image">
                 {imageSrc ? (
-                  <img src={imageSrc} alt={card.nameJp || card.cardNo} loading="lazy" />
+                  <img
+                    src={imageSrc}
+                    alt={card.nameJp || card.cardNo}
+                    loading="lazy"
+                  />
                 ) : (
                   <span>No Image</span>
                 )}
@@ -406,6 +415,7 @@ function UnionArenaCardListPage() {
               <div className="ua-card-body">
                 <div className="ua-card-topline">
                   <span className="ua-card-no">{card.cardNo || "No."}</span>
+
                   {card.rarity && (
                     <span className="ua-rarity-badge">{card.rarity}</span>
                   )}
