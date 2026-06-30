@@ -26,12 +26,13 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Local downloads / scraped data
+# Local downloads / scraped raw data
 downloads/
 
-# UNION ARENA local public data
-# 注意：UNION ARENA cards.json 和 images 暫時不要 commit 到 GitHub
-public/data/union-arena-jp/
+# UNION ARENA public data
+# JSON 可以 commit，給 Vercel 前端讀取
+# 圖片不要 commit，檔案太大
+public/data/union-arena-jp/images/
 
 # Harry Potter scraping / debug files
 src/data/cardQaDebug.json

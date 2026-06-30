@@ -1,0 +1,26 @@
+{
+  "generatedAt": "2026-06-30T03:48:39.526Z",
+  "input": "downloads/union-arena-jp/cards.enriched.json",
+  "cardsOutput": "public/data/union-arena-jp/cards.zh.json",
+  "productsOutput": "public/data/union-arena-jp/products.zh.json",
+  "total": 8036,
+  "products": 91,
+  "sourceOk": 8034,
+  "sourceFailed": 2,
+  "withEffectJp": 7418,
+  "withEffectZh": 7418,
+  "withTriggerJp": 7418,
+  "withTriggerZh": 7418,
+  "withRarity": 5681,
+  "withStats": 8034,
+  "withImageFile": 8036,
+  "translationStatus": {
+    "draftRuleBased": 7418,
+    "noText": 618
+  },
+  "notes": [
+    "effectZh / triggerZh 是規則字典初步中文化，仍需人工校對。",
+    "nameZh 第一版沿用日文卡名，角色譯名可之後分批建立名稱字典。",
+    "public/data/union-arena-jp/ 已在 .gitignore，暫時不要 commit 大量資料或圖片。"
+  ]
+}

@@ -1,0 +1,2121 @@
+[
+  {
+    "id": "570142",
+    "productCode": "UA42BT",
+    "nameJp": "〈物語〉シリーズ 【UA42BT】",
+    "nameZh": "〈物語〉系列 【UA42BT】",
+    "cardCount": 147,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570042",
+    "productCode": "UA42ST",
+    "nameJp": "〈物語〉シリーズ 【UA42ST】",
+    "nameZh": "〈物語〉系列 【UA42ST】",
+    "cardCount": 27,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570136",
+    "productCode": "UA36BT",
+    "nameJp": "「マクロス」シリーズ 【UA36BT】",
+    "nameZh": "Macross 【UA36BT】",
+    "cardCount": 137,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570036",
+    "productCode": "UA36ST",
+    "nameJp": "「マクロス」シリーズ 【UA36ST】",
+    "nameZh": "Macross 【UA36ST】",
+    "cardCount": 27,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570147",
+    "productCode": "UA47BT",
+    "nameJp": "「東京喰種トーキョーグール」シリーズ【UA47BT】",
+    "nameZh": "東京喰種 【UA47BT】",
+    "cardCount": 146,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570139",
+    "productCode": "UA39BT",
+    "nameJp": "『キン肉マン』完璧超人始祖編 【UA39BT】",
+    "nameZh": "金肉人 【UA39BT】",
+    "cardCount": 117,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570133",
+    "productCode": "UA33BT",
+    "nameJp": "2.5次元の誘惑 【UA33BT】",
+    "nameZh": "2.5 次元的誘惑 【UA33BT】",
+    "cardCount": 118,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570108",
+    "productCode": "UA08BT",
+    "nameJp": "BLEACH 千年血戦篇 【UA08BT】",
+    "nameZh": "BLEACH 千年血戰篇 【UA08BT】",
+    "cardCount": 132,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紫",
+      "綠",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570008",
+    "productCode": "UA08ST",
+    "nameJp": "BLEACH 千年血戦篇 【UA08ST】",
+    "nameZh": "BLEACH 千年血戰篇 【UA08ST】",
+    "cardCount": 20,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紫"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570114",
+    "productCode": "UA14BT",
+    "nameJp": "Dr.STONE 【UA14BT】",
+    "nameZh": "Dr.STONE 新石紀 【UA14BT】",
+    "cardCount": 134,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紫",
+      "綠",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570014",
+    "productCode": "UA14ST",
+    "nameJp": "Dr.STONE 【UA14ST】",
+    "nameZh": "Dr.STONE 新石紀 【UA14ST】",
+    "cardCount": 20,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "綠"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570122",
+    "productCode": "UA22BT",
+    "nameJp": "GAMERA -Rebirth- 【UA22BT】",
+    "nameZh": "GAMERA -Rebirth- 【UA22BT】",
+    "cardCount": 113,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "綠",
+      "藍"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570103",
+    "productCode": "UA03BT",
+    "nameJp": "HUNTER×HUNTER 【UA03BT】",
+    "nameZh": "HUNTER×HUNTER 【UA03BT】",
+    "cardCount": 134,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紫",
+      "綠",
+      "藍"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570003",
+    "productCode": "UA03ST",
+    "nameJp": "HUNTER×HUNTER 【UA03ST】",
+    "nameZh": "HUNTER×HUNTER 【UA03ST】",
+    "cardCount": 20,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "綠"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570140",
+    "productCode": "UA40BT",
+    "nameJp": "Re:ゼロから始める異世界生活 【UA40BT】",
+    "nameZh": "Re:從零開始的異世界生活 【UA40BT】",
+    "cardCount": 137,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紫",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570040",
+    "productCode": "UA40ST",
+    "nameJp": "Re:ゼロから始める異世界生活 【UA40ST】",
+    "nameZh": "Re:從零開始的異世界生活 【UA40ST】",
+    "cardCount": 27,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紫",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570143",
+    "productCode": "UA43BT",
+    "nameJp": "SAKAMOTO DAYS【UA43BT】",
+    "nameZh": "SAKAMOTO DAYS 坂本日常 【UA43BT】",
+    "cardCount": 113,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紫",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570124",
+    "productCode": "UA24BT",
+    "nameJp": "SHY 【UA24BT】",
+    "nameZh": "SHY 靦腆英雄 【UA24BT】",
+    "cardCount": 114,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "藍"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570116",
+    "productCode": "UA16BT",
+    "nameJp": "SYNDUALITY Noir 【UA16BT】",
+    "nameZh": "SYNDUALITY Noir 【UA16BT】",
+    "cardCount": 135,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570016",
+    "productCode": "UA16ST",
+    "nameJp": "SYNDUALITY Noir 【UA16ST】",
+    "nameZh": "SYNDUALITY Noir 【UA16ST】",
+    "cardCount": 20,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570106",
+    "productCode": "UA06BT",
+    "nameJp": "Tales of ARISE 【UA06BT】",
+    "nameZh": "Tales of ARISE 【UA06BT】",
+    "cardCount": 134,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "綠",
+      "藍"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570006",
+    "productCode": "UA06ST",
+    "nameJp": "Tales of ARISE 【UA06ST】",
+    "nameZh": "Tales of ARISE 【UA06ST】",
+    "cardCount": 20,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570145",
+    "productCode": "UA45BT",
+    "nameJp": "To LOVEる-とらぶる- Memory of Heroines【UA45BT】",
+    "nameZh": "To LOVEる-とらぶる- Memory of Heroines 【UA45BT】",
+    "cardCount": 135,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570138",
+    "productCode": "UA38BT",
+    "nameJp": "WIND BREAKER 【UA38BT】",
+    "nameZh": "WIND BREAKER 【UA38BT】",
+    "cardCount": 116,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "綠",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570130",
+    "productCode": "UA30BT",
+    "nameJp": "アークナイツ 【UA30BT】",
+    "nameZh": "明日方舟 【UA30BT】",
+    "cardCount": 137,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570030",
+    "productCode": "UA30ST",
+    "nameJp": "アークナイツ 【UA30ST】",
+    "nameZh": "明日方舟 【UA30ST】",
+    "cardCount": 27,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570301",
+    "productCode": "PC01BT",
+    "nameJp": "アイドルマスター シャイニーカラーズ 【PC01BT】",
+    "nameZh": "偶像大師 閃耀色彩 【PC01BT】",
+    "cardCount": 100,
+    "rarities": [],
+    "colors": [
+      "紅",
+      "紫",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570104",
+    "productCode": "UA04BT",
+    "nameJp": "アイドルマスター シャイニーカラーズ 【UA04BT】",
+    "nameZh": "偶像大師 閃耀色彩 【UA04BT】",
+    "cardCount": 139,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570004",
+    "productCode": "UA04ST",
+    "nameJp": "アイドルマスター シャイニーカラーズ 【UA04ST】",
+    "nameZh": "偶像大師 閃耀色彩 【UA04ST】",
+    "cardCount": 20,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570125",
+    "productCode": "UA25BT",
+    "nameJp": "アンデッドアンラック 【UA25BT】",
+    "nameZh": "不死不運 【UA25BT】",
+    "cardCount": 115,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570146",
+    "productCode": "UA46BT",
+    "nameJp": "カグラバチ【UA46BT】",
+    "nameZh": "神樂鉢 【UA46BT】",
+    "cardCount": 125,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570148",
+    "productCode": "UA48BT",
+    "nameJp": "キングダム【UA48BT】",
+    "nameZh": "王者天下 【UA48BT】",
+    "cardCount": 142,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570048",
+    "productCode": "UA48ST",
+    "nameJp": "キングダム【UA48ST】",
+    "nameZh": "王者天下 【UA48ST】",
+    "cardCount": 27,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570134",
+    "productCode": "UA34BT",
+    "nameJp": "コードギアス 奪還のロゼ 【UA34BT】",
+    "nameZh": "Code Geass 奪還的 Rozé 【UA34BT】",
+    "cardCount": 114,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570101",
+    "productCode": "UA01BT",
+    "nameJp": "コードギアス 反逆のルルーシュ 【UA01BT】",
+    "nameZh": "Code Geass 反叛的魯路修 【UA01BT】",
+    "cardCount": 134,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "綠"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570001",
+    "productCode": "UA01ST",
+    "nameJp": "コードギアス 反逆のルルーシュ 【UA01ST】",
+    "nameZh": "Code Geass 反叛的魯路修 【UA01ST】",
+    "cardCount": 20,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紫"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570132",
+    "productCode": "UA32BT",
+    "nameJp": "シャングリラ・フロンティア 【UA32BT】",
+    "nameZh": "香格里拉・開拓異境 【UA32BT】",
+    "cardCount": 115,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "綠"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570115",
+    "productCode": "UA15BT",
+    "nameJp": "ソードアート・オンライン 【UA15BT】",
+    "nameZh": "刀劍神域 【UA15BT】",
+    "cardCount": 140,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "綠",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570015",
+    "productCode": "UA15ST",
+    "nameJp": "ソードアート・オンライン 【UA15ST】",
+    "nameZh": "刀劍神域 【UA15ST】",
+    "cardCount": 20,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "藍"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570153",
+    "productCode": "UA53BT",
+    "nameJp": "チェンソーマン【UA53BT】",
+    "nameZh": "鏈鋸人 【UA53BT】",
+    "cardCount": 122,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570117",
+    "productCode": "UA17BT",
+    "nameJp": "トリコ 【UA17BT】",
+    "nameZh": "美食獵人 TORIKO 【UA17BT】",
+    "cardCount": 135,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紫",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570017",
+    "productCode": "UA17ST",
+    "nameJp": "トリコ 【UA17ST】",
+    "nameZh": "美食獵人 TORIKO 【UA17ST】",
+    "cardCount": 20,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "藍"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570119",
+    "productCode": "UA19BT",
+    "nameJp": "ハイキュー‼ 【UA19BT】",
+    "nameZh": "排球少年!! 【UA19BT】",
+    "cardCount": 134,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570019",
+    "productCode": "UA19ST",
+    "nameJp": "ハイキュー‼ 【UA19ST】",
+    "nameZh": "排球少年!! 【UA19ST】",
+    "cardCount": 27,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570120",
+    "productCode": "UA20BT",
+    "nameJp": "ブラッククローバー 【UA20BT】",
+    "nameZh": "黑色五葉草 【UA20BT】",
+    "cardCount": 136,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "綠"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570020",
+    "productCode": "UA20ST",
+    "nameJp": "ブラッククローバー 【UA20ST】",
+    "nameZh": "黑色五葉草 【UA20ST】",
+    "cardCount": 27,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "綠"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570112",
+    "productCode": "UA12BT",
+    "nameJp": "ブルーロック 【UA12BT】",
+    "nameZh": "BLUE LOCK 藍色監獄 【UA12BT】",
+    "cardCount": 134,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "藍"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570012",
+    "productCode": "UA12ST",
+    "nameJp": "ブルーロック 【UA12ST】",
+    "nameZh": "BLUE LOCK 藍色監獄 【UA12ST】",
+    "cardCount": 20,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "藍"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570141",
+    "productCode": "UA41BT",
+    "nameJp": "るろうに剣心 －明治剣客浪漫譚－ 【UA41BT】",
+    "nameZh": "神劍闖江湖－明治劍客浪漫譚－ 【UA41BT】",
+    "cardCount": 137,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "藍"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570041",
+    "productCode": "UA41ST",
+    "nameJp": "るろうに剣心 －明治剣客浪漫譚－ 【UA41ST】",
+    "nameZh": "神劍闖江湖－明治劍客浪漫譚－ 【UA41ST】",
+    "cardCount": 27,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "藍"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570135",
+    "productCode": "UA35BT",
+    "nameJp": "ワンパンマン 【UA35BT】",
+    "nameZh": "一拳超人 【UA35BT】",
+    "cardCount": 135,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "綠",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570035",
+    "productCode": "UA35ST",
+    "nameJp": "ワンパンマン 【UA35ST】",
+    "nameZh": "一拳超人 【UA35ST】",
+    "cardCount": 27,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "綠",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570144",
+    "productCode": "UA44BT",
+    "nameJp": "ヱヴァンゲリヲン新劇場版【UA44BT】",
+    "nameZh": "福音戰士新劇場版 【UA44BT】",
+    "cardCount": 136,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570044",
+    "productCode": "UA44ST",
+    "nameJp": "ヱヴァンゲリヲン新劇場版【UA44ST】",
+    "nameZh": "福音戰士新劇場版 【UA44ST】",
+    "cardCount": 27,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570152",
+    "productCode": "UA52BT",
+    "nameJp": "陰の実力者になりたくて！【UA52BT】",
+    "nameZh": "想要成為影之實力者！ 【UA52BT】",
+    "cardCount": 131,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紫",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570151",
+    "productCode": "UA51BT",
+    "nameJp": "俺だけレベルアップな件【UA51BT】",
+    "nameZh": "我獨自升級 【UA51BT】",
+    "cardCount": 118,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紫",
+      "綠"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570129",
+    "productCode": "UA29BT",
+    "nameJp": "仮面ライダー 【UA29BT】",
+    "nameZh": "假面騎士 【UA29BT】",
+    "cardCount": 133,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570029",
+    "productCode": "UA29ST",
+    "nameJp": "仮面ライダー 【UA29ST】",
+    "nameZh": "假面騎士 【UA29ST】",
+    "cardCount": 27,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570128",
+    "productCode": "UA28BT",
+    "nameJp": "怪獣８号 【UA28BT】",
+    "nameZh": "怪獸 8 號 【UA28BT】",
+    "cardCount": 116,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "綠",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570127",
+    "productCode": "UA27BT",
+    "nameJp": "学園アイドルマスター 【UA27BT】",
+    "nameZh": "學園偶像大師 【UA27BT】",
+    "cardCount": 148,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "藍"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570105",
+    "productCode": "UA05BT",
+    "nameJp": "鬼滅の刃 【UA05BT】",
+    "nameZh": "鬼滅之刃 【UA05BT】",
+    "cardCount": 134,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570005",
+    "productCode": "UA05ST",
+    "nameJp": "鬼滅の刃 【UA05ST】",
+    "nameZh": "鬼滅之刃 【UA05ST】",
+    "cardCount": 20,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570111",
+    "productCode": "UA11BT",
+    "nameJp": "銀魂 【UA11BT】",
+    "nameZh": "銀魂 【UA11BT】",
+    "cardCount": 133,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570011",
+    "productCode": "UA11ST",
+    "nameJp": "銀魂 【UA11ST】",
+    "nameZh": "銀魂 【UA11ST】",
+    "cardCount": 20,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570126",
+    "productCode": "UA26BT",
+    "nameJp": "君のことが大大大大大好きな100人の彼女 【UA26BT】",
+    "nameZh": "超超超超超喜歡你的100個女朋友 【UA26BT】",
+    "cardCount": 126,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "綠",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570150",
+    "productCode": "UA50BT",
+    "nameJp": "犬夜叉【UA50BT】",
+    "nameZh": "犬夜叉 【UA50BT】",
+    "cardCount": 117,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570801",
+    "productCode": "UA01PB",
+    "nameJp": "限定商品収録カード",
+    "nameZh": "限定商品收錄卡",
+    "cardCount": 3,
+    "rarities": [
+      "R"
+    ],
+    "colors": [
+      "紫",
+      "綠",
+      "藍"
+    ],
+    "types": [
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570137",
+    "productCode": "UA37BT",
+    "nameJp": "鋼の錬金術師 FULLMETAL ALCHEMIST 【UA37BT】",
+    "nameZh": "鋼之鍊金術師 FULLMETAL ALCHEMIST 【UA37BT】",
+    "cardCount": 138,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紫",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570037",
+    "productCode": "UA37ST",
+    "nameJp": "鋼の錬金術師 FULLMETAL ALCHEMIST 【UA37ST】",
+    "nameZh": "鋼之鍊金術師 FULLMETAL ALCHEMIST 【UA37ST】",
+    "cardCount": 27,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紫",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570102",
+    "productCode": "UA02BT",
+    "nameJp": "呪術廻戦 【UA02BT】",
+    "nameZh": "咒術迴戰 【UA02BT】",
+    "cardCount": 134,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紫",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570002",
+    "productCode": "UA02ST",
+    "nameJp": "呪術廻戦 【UA02ST】",
+    "nameZh": "咒術迴戰 【UA02ST】",
+    "cardCount": 20,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "藍"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570118",
+    "productCode": "UA18BT",
+    "nameJp": "勝利の女神：NIKKE 【UA18BT】",
+    "nameZh": "勝利女神：NIKKE 【UA18BT】",
+    "cardCount": 141,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "綠",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570018",
+    "productCode": "UA18ST",
+    "nameJp": "勝利の女神：NIKKE 【UA18ST】",
+    "nameZh": "勝利女神：NIKKE 【UA18ST】",
+    "cardCount": 27,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "綠",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570302",
+    "productCode": "PC02BT",
+    "nameJp": "勝利の女神：NIKKE【PC02BT】",
+    "nameZh": "勝利女神：NIKKE 【PC02BT】",
+    "cardCount": 88,
+    "rarities": [],
+    "colors": [
+      "紅",
+      "紫",
+      "綠",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570123",
+    "productCode": "UA23BT",
+    "nameJp": "進撃の巨人 【UA23BT】",
+    "nameZh": "進擊的巨人 【UA23BT】",
+    "cardCount": 137,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "綠",
+      "藍"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570023",
+    "productCode": "UA23ST",
+    "nameJp": "進撃の巨人 【UA23ST】",
+    "nameZh": "進擊的巨人 【UA23ST】",
+    "cardCount": 27,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "綠",
+      "藍"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570113",
+    "productCode": "UA13BT",
+    "nameJp": "鉄拳7 【UA13BT】",
+    "nameZh": "鐵拳 7 【UA13BT】",
+    "cardCount": 134,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "藍"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570013",
+    "productCode": "UA13ST",
+    "nameJp": "鉄拳7 【UA13ST】",
+    "nameZh": "鐵拳 7 【UA13ST】",
+    "cardCount": 19,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570107",
+    "productCode": "UA07BT",
+    "nameJp": "転生したらスライムだった件 【UA07BT】",
+    "nameZh": "關於我轉生變成史萊姆這檔事 【UA07BT】",
+    "cardCount": 134,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "綠",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570007",
+    "productCode": "UA07ST",
+    "nameJp": "転生したらスライムだった件 【UA07ST】",
+    "nameZh": "關於我轉生變成史萊姆這檔事 【UA07ST】",
+    "cardCount": 20,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "藍"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570047",
+    "productCode": "UA47ST",
+    "nameJp": "東京喰種トーキョーグール【UA47ST】",
+    "nameZh": "東京喰種 【UA47ST】",
+    "cardCount": 27,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570109",
+    "productCode": "UA09BT",
+    "nameJp": "僕とロボコ 【UA09BT】",
+    "nameZh": "我與機器子 【UA09BT】",
+    "cardCount": 130,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "綠",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570009",
+    "productCode": "UA09ST",
+    "nameJp": "僕とロボコ 【UA09ST】",
+    "nameZh": "我與機器子 【UA09ST】",
+    "cardCount": 20,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570110",
+    "productCode": "UA10BT",
+    "nameJp": "僕のヒーローアカデミア 【UA10BT】",
+    "nameZh": "我的英雄學院 【UA10BT】",
+    "cardCount": 134,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "綠"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570010",
+    "productCode": "UA10ST",
+    "nameJp": "僕のヒーローアカデミア 【UA10ST】",
+    "nameZh": "我的英雄學院 【UA10ST】",
+    "cardCount": 20,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "綠"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570149",
+    "productCode": "UA49BT",
+    "nameJp": "魔都精兵のスレイブ【UA49BT】",
+    "nameZh": "魔都精兵的奴隸 【UA49BT】",
+    "cardCount": 125,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "綠",
+      "藍",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570131",
+    "productCode": "UA31BT",
+    "nameJp": "魔法少女まどか☆マギカ 【UA31BT】",
+    "nameZh": "魔法少女小圓 【UA31BT】",
+    "cardCount": 136,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570031",
+    "productCode": "UA31ST",
+    "nameJp": "魔法少女まどか☆マギカ 【UA31ST】",
+    "nameZh": "魔法少女小圓 【UA31ST】",
+    "cardCount": 27,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "黃"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570154",
+    "productCode": "UA54BT",
+    "nameJp": "無職転生 ～異世界行ったら本気だす～【UA54BT】",
+    "nameZh": "無職轉生～到了異世界就拿出真本事～ 【UA54BT】",
+    "cardCount": 120,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "綠",
+      "藍"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570121",
+    "productCode": "UA21BT",
+    "nameJp": "幽☆遊☆白書 【UA21BT】",
+    "nameZh": "幽遊白書 【UA21BT】",
+    "cardCount": 136,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "綠",
+      "藍"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  },
+  {
+    "id": "570021",
+    "productCode": "UA21ST",
+    "nameJp": "幽☆遊☆白書 【UA21ST】",
+    "nameZh": "幽遊白書 【UA21ST】",
+    "cardCount": 27,
+    "rarities": [
+      "C",
+      "R",
+      "SR",
+      "U"
+    ],
+    "colors": [
+      "紅",
+      "紫",
+      "綠"
+    ],
+    "types": [
+      "アクションポイント",
+      "事件卡",
+      "場地卡",
+      "角色卡"
+    ]
+  }
+]
