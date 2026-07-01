@@ -1,4 +1,4 @@
-function safeText(value) {
+﻿function safeText(value) {
   if (value === null || value === undefined) return "";
   return String(value).trim();
 }
@@ -7,12 +7,12 @@ function getImageSrc(card) {
   const imageUrl = safeText(card.imageUrl);
   const imageFile = safeText(card.imageFile);
 
-  // Vercel / GitHub 部署時，優先使用官方圖片 URL
+  // Vercel / GitHub ?函蔡???芸?雿輻摰?? URL
   if (imageUrl && /^https?:\/\//i.test(imageUrl)) {
     return imageUrl;
   }
 
-  // 本機有複製 images 時，才 fallback 到本地圖片
+  // ?祆???鋆?images ????fallback ?唳?啣???
   if (imageFile) {
     const normalizedPath = imageFile.replace(/\\/g, "/");
 
@@ -75,9 +75,9 @@ function UnionArenaCardModal({ card, onClose }) {
           type="button"
           className="ua-modal-close"
           onClick={onClose}
-          aria-label="關閉"
+          aria-label="??"
         >
-          ×
+          ?
         </button>
 
         <div className="ua-card-modal-layout">
@@ -95,7 +95,7 @@ function UnionArenaCardModal({ card, onClose }) {
             <div className="ua-modal-heading">
               <p className="eyebrow">UNION ARENA CARD</p>
 
-              <h2>{card.nameZh || card.nameJp || "未命名卡牌"}</h2>
+              <h2>{card.nameZh || card.nameJp || "?芸???}</h2>
 
               {card.nameJp && card.nameZh !== card.nameJp && (
                 <p className="ua-modal-name-jp">{card.nameJp}</p>
@@ -107,32 +107,32 @@ function UnionArenaCardModal({ card, onClose }) {
             </div>
 
             <dl className="ua-modal-detail-grid">
-              <DetailRow label="卡號" value={card.cardNo} />
-              <DetailRow label="稀有度" value={card.rarity} />
-              <DetailRow label="類型" value={card.cardTypeZh || card.cardTypeJp} />
-              <DetailRow label="顏色" value={card.colorZh || card.colorJp} />
+              <DetailRow label="?∟?" value={card.cardNo} />
+              <DetailRow label="蝔?漲" value={card.rarity} />
+              <DetailRow label="憿?" value={card.cardTypeZh || card.cardTypeJp} />
+              <DetailRow label="憿" value={card.colorZh || card.colorJp} />
               <DetailRow label="Cost" value={card.cost} />
               <DetailRow label="AP" value={card.ap} />
               <DetailRow label="BP" value={card.bp} />
-              <DetailRow label="發生能量" value={card.generatedEnergy} />
-              <DetailRow label="特徵" value={card.featureZh || card.featureJp} />
+              <DetailRow label="?潛??賡?" value={card.generatedEnergy} />
+              <DetailRow label="?孵噩" value={card.featureZh || card.featureJp} />
               <DetailRow
-                label="收錄商品"
+                label="?園???"
                 value={card.productNameZh || card.productNameJp}
               />
             </dl>
 
-            <TextBlock title="效果" text={card.effectZh} variant="zh" />
+            <TextBlock title="??" text={card.effectZh} variant="zh" />
 
             {card.effectJp && card.effectJp !== card.effectZh && (
-              <TextBlock title="日文原文" text={card.effectJp} variant="jp" />
+              <TextBlock title="?交???" text={card.effectJp} variant="jp" />
             )}
 
             <TextBlock title="Trigger" text={card.triggerZh} variant="trigger" />
 
             {card.triggerJp && card.triggerJp !== card.triggerZh && (
               <TextBlock
-                title="Trigger 日文原文"
+                title="Trigger ?交???"
                 text={card.triggerJp}
                 variant="jp"
               />
@@ -145,7 +145,7 @@ function UnionArenaCardModal({ card, onClose }) {
                 target="_blank"
                 rel="noreferrer"
               >
-                查看官方資料
+                ?亦?摰鞈?
               </a>
             )}
           </div>
@@ -156,3 +156,4 @@ function UnionArenaCardModal({ card, onClose }) {
 }
 
 export default UnionArenaCardModal;
+

@@ -1,30 +1,39 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+﻿import { useCallback, useEffect, useMemo, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import PortalHomePage from "./pages/portal/PortalHomePage";
 import GameSelectPage from "./pages/portal/GameSelectPage";
 
-import HarryPotterHomePage from "./pages/harry-potter/HarryPotterHomePage";
-import HarryPotterCardListPage from "./pages/harry-potter/HarryPotterCardListPage";
-import HarryPotterProductPage from "./pages/harry-potter/HarryPotterProductPage";
-import HarryPotterNewsPage from "./pages/harry-potter/HarryPotterNewsPage";
-import HarryPotterEventPage from "./pages/harry-potter/HarryPotterEventPage";
-import HarryPotterDeckPage from "./pages/harry-potter/HarryPotterDeckPage";
-import HarryPotterAboutPage from "./pages/harry-potter/HarryPotterAboutPage";
+import HarryPotterHomePage from "./components/harry-potter/HarryPotterHomePage";
+import HarryPotterCardListPage from "./components/harry-potter/HarryPotterCardListPage";
+import HarryPotterProductPage from "./components/harry-potter/HarryPotterProductPage";
+import HarryPotterNewsPage from "./components/harry-potter/HarryPotterNewsPage";
+import HarryPotterEventPage from "./components/harry-potter/HarryPotterEventPage";
+import HarryPotterDeckPage from "./components/harry-potter/HarryPotterDeckPage";
+import HarryPotterAboutPage from "./components/harry-potter/HarryPotterAboutPage";
 
-import UnionArenaHomePage from "./pages/union-arena/UnionArenaHomePage";
-import UnionArenaCardListPage from "./pages/union-arena/UnionArenaCardListPage";
-import UnionArenaProductPage from "./pages/union-arena/UnionArenaProductPage";
-import UnionArenaNewsPage from "./pages/union-arena/UnionArenaNewsPage";
-import UnionArenaEventPage from "./pages/union-arena/UnionArenaEventPage";
-import UnionArenaDeckPage from "./pages/union-arena/UnionArenaDeckPage";
-import UnionArenaAboutPage from "./pages/union-arena/UnionArenaAboutPage";
+import UnionArenaHomePage from "./components/union-arena/UnionArenaHomePage";
+import UnionArenaCardListPage from "./components/union-arena/UnionArenaCardListPage";
+import UnionArenaProductPage from "./components/union-arena/UnionArenaProductPage";
+import UnionArenaNewsPage from "./components/union-arena/UnionArenaNewsPage";
+import UnionArenaEventPage from "./components/union-arena/UnionArenaEventPage";
+import UnionArenaDeckPage from "./components/union-arena/UnionArenaDeckPage";
+import UnionArenaAboutPage from "./components/union-arena/UnionArenaAboutPage";
+
+import OnePieceHomePage from "./components/one-piece/OnePieceHomePage";
+import OnePieceCardListPage from "./components/one-piece/OnePieceCardListPage";
+import OnePieceProductPage from "./components/one-piece/OnePieceProductPage";
+import OnePieceNewsPage from "./components/one-piece/OnePieceNewsPage";
+import OnePieceEventPage from "./components/one-piece/OnePieceEventPage";
+import OnePieceDeckPage from "./components/one-piece/OnePieceDeckPage";
+import OnePieceAboutPage from "./components/one-piece/OnePieceAboutPage";
 
 import { recordVisit } from "./utils/visitorTracker";
 
 const HP_BASE = "games/harry-potter";
 const UA_BASE = "games/union-arena";
+const OP_BASE = "games/one-piece";
 
 const ROUTES = {
   PORTAL_HOME: "home",
@@ -44,7 +53,15 @@ const ROUTES = {
   UNION_ARENA_NEWS: `${UA_BASE}/news`,
   UNION_ARENA_EVENTS: `${UA_BASE}/events`,
   UNION_ARENA_DECKS: `${UA_BASE}/decks`,
-  UNION_ARENA_ABOUT: `${UA_BASE}/about`
+  UNION_ARENA_ABOUT: `${UA_BASE}/about`,
+
+  ONE_PIECE_HOME: OP_BASE,
+  ONE_PIECE_CARDS: `${OP_BASE}/cards`,
+  ONE_PIECE_PRODUCTS: `${OP_BASE}/products`,
+  ONE_PIECE_NEWS: `${OP_BASE}/news`,
+  ONE_PIECE_EVENTS: `${OP_BASE}/events`,
+  ONE_PIECE_DECKS: `${OP_BASE}/decks`,
+  ONE_PIECE_ABOUT: `${OP_BASE}/about`
 };
 
 const validPages = Object.values(ROUTES);
@@ -63,28 +80,44 @@ const legacyPageMap = {
   "union-arena-news": ROUTES.UNION_ARENA_NEWS,
   "union-arena-events": ROUTES.UNION_ARENA_EVENTS,
   "union-arena-decks": ROUTES.UNION_ARENA_DECKS,
-  "union-arena-about": ROUTES.UNION_ARENA_ABOUT
+  "union-arena-about": ROUTES.UNION_ARENA_ABOUT,
+
+  "one-piece": ROUTES.ONE_PIECE_HOME,
+  "one-piece-cards": ROUTES.ONE_PIECE_CARDS,
+  "one-piece-products": ROUTES.ONE_PIECE_PRODUCTS,
+  "one-piece-news": ROUTES.ONE_PIECE_NEWS,
+  "one-piece-events": ROUTES.ONE_PIECE_EVENTS,
+  "one-piece-decks": ROUTES.ONE_PIECE_DECKS,
+  "one-piece-about": ROUTES.ONE_PIECE_ABOUT
 };
 
 const pageTitles = {
-  [ROUTES.PORTAL_HOME]: "總首頁",
-  [ROUTES.GAME_SELECT]: "遊戲列表",
+  [ROUTES.PORTAL_HOME]: "蝮賡???,
+  [ROUTES.GAME_SELECT]: "??”",
 
   [ROUTES.HARRY_POTTER_HOME]: "Harry Potter TCG",
-  [ROUTES.HARRY_POTTER_CARDS]: "Harry Potter TCG 卡牌列表",
-  [ROUTES.HARRY_POTTER_PRODUCTS]: "Harry Potter TCG 商品情報",
-  [ROUTES.HARRY_POTTER_NEWS]: "Harry Potter TCG 新聞",
-  [ROUTES.HARRY_POTTER_EVENTS]: "Harry Potter TCG 活動",
-  [ROUTES.HARRY_POTTER_DECKS]: "Harry Potter TCG 牌組",
-  [ROUTES.HARRY_POTTER_ABOUT]: "關於 Harry Potter TCG 資料庫",
+  [ROUTES.HARRY_POTTER_CARDS]: "Harry Potter TCG ?∠??”",
+  [ROUTES.HARRY_POTTER_PRODUCTS]: "Harry Potter TCG ???",
+  [ROUTES.HARRY_POTTER_NEWS]: "Harry Potter TCG ?啗?",
+  [ROUTES.HARRY_POTTER_EVENTS]: "Harry Potter TCG 瘣餃?",
+  [ROUTES.HARRY_POTTER_DECKS]: "Harry Potter TCG ??",
+  [ROUTES.HARRY_POTTER_ABOUT]: "? Harry Potter TCG 鞈?摨?,
 
   [ROUTES.UNION_ARENA_HOME]: "UNION ARENA",
-  [ROUTES.UNION_ARENA_CARDS]: "UNION ARENA 卡牌列表",
-  [ROUTES.UNION_ARENA_PRODUCTS]: "UNION ARENA 商品情報",
-  [ROUTES.UNION_ARENA_NEWS]: "UNION ARENA 新聞",
-  [ROUTES.UNION_ARENA_EVENTS]: "UNION ARENA 活動",
-  [ROUTES.UNION_ARENA_DECKS]: "UNION ARENA 牌組",
-  [ROUTES.UNION_ARENA_ABOUT]: "關於 UNION ARENA 資料庫"
+  [ROUTES.UNION_ARENA_CARDS]: "UNION ARENA ?∠??”",
+  [ROUTES.UNION_ARENA_PRODUCTS]: "UNION ARENA ???",
+  [ROUTES.UNION_ARENA_NEWS]: "UNION ARENA ?啗?",
+  [ROUTES.UNION_ARENA_EVENTS]: "UNION ARENA 瘣餃?",
+  [ROUTES.UNION_ARENA_DECKS]: "UNION ARENA ??",
+  [ROUTES.UNION_ARENA_ABOUT]: "? UNION ARENA 鞈?摨?,
+
+  [ROUTES.ONE_PIECE_HOME]: "ONE PIECE Card Game",
+  [ROUTES.ONE_PIECE_CARDS]: "ONE PIECE Card Game ?∠??”",
+  [ROUTES.ONE_PIECE_PRODUCTS]: "ONE PIECE Card Game ???",
+  [ROUTES.ONE_PIECE_NEWS]: "ONE PIECE Card Game ?啗?",
+  [ROUTES.ONE_PIECE_EVENTS]: "ONE PIECE Card Game 瘣餃?",
+  [ROUTES.ONE_PIECE_DECKS]: "ONE PIECE Card Game ??",
+  [ROUTES.ONE_PIECE_ABOUT]: "? ONE PIECE Card Game 鞈?摨?
 };
 
 function normalizeRoute(route) {
@@ -122,6 +155,10 @@ function isUnionArenaRoute(pageId) {
   return pageId === UA_BASE || pageId.startsWith(`${UA_BASE}/`);
 }
 
+function isOnePieceRoute(pageId) {
+  return pageId === OP_BASE || pageId.startsWith(`${OP_BASE}/`);
+}
+
 function getShellClassName(currentPage) {
   if (isHarryPotterRoute(currentPage)) {
     return "app-shell hp-theme";
@@ -129,6 +166,10 @@ function getShellClassName(currentPage) {
 
   if (isUnionArenaRoute(currentPage)) {
     return "app-shell union-arena-theme";
+  }
+
+  if (isOnePieceRoute(currentPage)) {
+    return "app-shell one-piece-theme";
   }
 
   return "app-shell portal-theme";
@@ -173,7 +214,7 @@ function App() {
   useEffect(() => {
     const title = pageTitles[currentPage] || pageTitles[ROUTES.PORTAL_HOME];
 
-    document.title = `${title}｜MTS' Card Game Library`;
+    document.title = `${title}嚚TS' Card Game Library`;
     recordVisit(document.title);
   }, [currentPage]);
 
@@ -200,7 +241,17 @@ function App() {
       [ROUTES.UNION_ARENA_NEWS]: <UnionArenaNewsPage />,
       [ROUTES.UNION_ARENA_EVENTS]: <UnionArenaEventPage />,
       [ROUTES.UNION_ARENA_DECKS]: <UnionArenaDeckPage />,
-      [ROUTES.UNION_ARENA_ABOUT]: <UnionArenaAboutPage />
+      [ROUTES.UNION_ARENA_ABOUT]: <UnionArenaAboutPage />,
+
+      [ROUTES.ONE_PIECE_HOME]: (
+        <OnePieceHomePage navigate={navigate} />
+      ),
+      [ROUTES.ONE_PIECE_CARDS]: <OnePieceCardListPage />,
+      [ROUTES.ONE_PIECE_PRODUCTS]: <OnePieceProductPage />,
+      [ROUTES.ONE_PIECE_NEWS]: <OnePieceNewsPage />,
+      [ROUTES.ONE_PIECE_EVENTS]: <OnePieceEventPage />,
+      [ROUTES.ONE_PIECE_DECKS]: <OnePieceDeckPage />,
+      [ROUTES.ONE_PIECE_ABOUT]: <OnePieceAboutPage />
     };
 
     return pageMap[currentPage] || pageMap[ROUTES.PORTAL_HOME];
@@ -220,3 +271,4 @@ function App() {
 }
 
 export default App;
+

@@ -20,6 +20,16 @@ export const games = [
     cardsRoute: "games/union-arena/cards"
   },
   {
+    id: "one-piece",
+    title: "ONE PIECE Card Game",
+    titleZh: "ONE PIECE Card Game 繁體中文卡牌資料庫",
+    status: "已開放",
+    description:
+      "整理 ONE PIECE Card Game 繁體中文版卡牌資料、商品情報、效果文字、顏色、特征與搜尋篩選功能。",
+    route: "games/one-piece",
+    cardsRoute: "games/one-piece/cards"
+  },
+  {
     id: "pokemon",
     title: "Pokémon TCG",
     titleZh: "寶可夢集換式卡牌遊戲",
@@ -28,16 +38,6 @@ export const games = [
       "未來可整理寶可夢卡牌資料、系列商品、牌組及收藏資訊。",
     route: "games/pokemon",
     cardsRoute: "games/pokemon/cards"
-  },
-  {
-    id: "one-piece",
-    title: "One Piece Card Game",
-    titleZh: "航海王卡牌遊戲",
-    status: "規劃中",
-    description:
-      "未來可整理航海王卡牌資料、產品系列、賽事資訊及牌組。",
-    route: "games/one-piece",
-    cardsRoute: "games/one-piece/cards"
   },
   {
     id: "magic",

@@ -50,4 +50,6 @@ src/data/cardModalRaw.html
 # Optional local temp files
 *.tmp
 *.temp
-*.log
+*.logdownloads/one-piece-tc/
+downloads/one-piece-tc-all/
+public/data/one-piece-tc/images/
