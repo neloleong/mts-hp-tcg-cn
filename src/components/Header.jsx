@@ -1,31 +1,32 @@
-import { useMemo, useState } from "react";
+﻿import { useMemo, useState } from "react";
 
 const HP_BASE = "games/harry-potter";
 const UA_BASE = "games/union-arena";
+const OP_BASE = "games/one-piece";
 
 const portalLinks = [
-  { id: "home", label: "總首頁" },
-  { id: "games", label: "遊戲列表" }
+  { id: "home", label: "蝮賡??? },
+  { id: "games", label: "??”" }
 ];
 
 const harryPotterLinks = [
-  { id: HP_BASE, label: "HP 首頁" },
-  { id: `${HP_BASE}/cards`, label: "卡牌列表" },
-  { id: `${HP_BASE}/products`, label: "商品情報" },
-  { id: `${HP_BASE}/news`, label: "新聞" },
-  { id: `${HP_BASE}/events`, label: "活動" },
-  { id: `${HP_BASE}/decks`, label: "牌組" },
-  { id: `${HP_BASE}/about`, label: "關於本站" }
+  { id: HP_BASE, label: "HP 擐?" },
+  { id: `${HP_BASE}/cards`, label: "?∠??”" },
+  { id: `${HP_BASE}/products`, label: "???" },
+  { id: `${HP_BASE}/news`, label: "?啗?" },
+  { id: `${HP_BASE}/events`, label: "瘣餃?" },
+  { id: `${HP_BASE}/decks`, label: "??" },
+  { id: `${HP_BASE}/about`, label: "??祉?" }
 ];
 
 const unionArenaLinks = [
-  { id: UA_BASE, label: "UA 首頁" },
-  { id: `${UA_BASE}/cards`, label: "卡牌列表" },
-  { id: `${UA_BASE}/products`, label: "商品情報" },
-  { id: `${UA_BASE}/news`, label: "新聞" },
-  { id: `${UA_BASE}/events`, label: "活動" },
-  { id: `${UA_BASE}/decks`, label: "牌組" },
-  { id: `${UA_BASE}/about`, label: "關於本站" }
+  { id: UA_BASE, label: "UA 擐?" },
+  { id: `${UA_BASE}/cards`, label: "?∠??”" },
+  { id: `${UA_BASE}/products`, label: "???" },
+  { id: `${UA_BASE}/news`, label: "?啗?" },
+  { id: `${UA_BASE}/events`, label: "瘣餃?" },
+  { id: `${UA_BASE}/decks`, label: "??" },
+  { id: `${UA_BASE}/about`, label: "??祉?" }
 ];
 
 function isHarryPotterRoute(pageId) {
@@ -40,20 +41,20 @@ function getBrandCopy(currentPage) {
   if (isHarryPotterRoute(currentPage)) {
     return {
       title: "Harry Potter TCG",
-      subtitle: "中文卡牌資料庫"
+      subtitle: "銝剜??∠?鞈?摨?
     };
   }
 
   if (isUnionArenaRoute(currentPage)) {
     return {
       title: "UNION ARENA",
-      subtitle: "日文版卡牌資料庫"
+      subtitle: "?交?????澈"
     };
   }
 
   return {
     title: "Card Game Library",
-    subtitle: "中文卡牌遊戲資料庫"
+    subtitle: "銝剜??∠??鞈?摨?
   };
 }
 
@@ -74,7 +75,8 @@ function Header({ currentPage, navigate }) {
     return [
       ...portalLinks,
       { id: HP_BASE, label: "Harry Potter TCG" },
-      { id: UA_BASE, label: "UNION ARENA" }
+      { id: UA_BASE, label: "UNION ARENA" },
+      { id: OP_BASE, label: "ONE PIECE" }
     ];
   }, [currentPage]);
 
@@ -103,10 +105,9 @@ function Header({ currentPage, navigate }) {
           type="button"
           className="menu-btn"
           onClick={() => setMenuOpen((current) => !current)}
-          aria-label="開關選單"
+          aria-label="???詨"
         >
-          ☰
-        </button>
+          ??        </button>
 
         <nav className={menuOpen ? "main-nav open" : "main-nav"}>
           {links.map((link) => (
