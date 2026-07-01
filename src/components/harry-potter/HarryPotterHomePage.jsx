@@ -1,4 +1,4 @@
-﻿import { sampleCards } from "../../data/cards";
+import { sampleCards } from "../../data/cards";
 
 function HomePage({ setPage }) {
   const latestCards = sampleCards.slice(0, 6);
@@ -7,10 +7,12 @@ function HomePage({ setPage }) {
     <>
       <section className="hero-section">
         <div className="hero-copy">
-          <span className="eyebrow">Harry Potter Card Game 銝剜?鞈?蝡?/span>
-          <h1>?瘜Ｙ TCG 銝剜??∠?鞈?摨?/h1>
+          <span className="eyebrow">Harry Potter Card Game 中文資料站</span>
+          <h1>哈利波特 TCG 中文卡牌資料庫</h1>
           <p>
-            ?渡? Harry Potter Card Game ?葉??蕃霅胯??銵具????晞?            瘣餃?鞈????????嫣噶?拙振敹恍?曉????蝟餃??批捆??          </p>
+            整理 Harry Potter Card Game 的中文卡牌翻譯、卡牌列表、商品情報、
+            活動資訊及規則資料，方便玩家快速查找卡牌效果與系列內容。
+          </p>
 
           <div className="hero-actions">
             <button
@@ -18,7 +20,7 @@ function HomePage({ setPage }) {
               className="primary-btn"
               onClick={() => setPage && setPage("cards")}
             >
-              ?亦??∠??”
+              查看卡牌列表
             </button>
 
             <button
@@ -26,19 +28,19 @@ function HomePage({ setPage }) {
               className="secondary-btn"
               onClick={() => setPage && setPage("products")}
             >
-              ?亦????
+              查看商品情報
             </button>
           </div>
         </div>
 
         <div className="hero-panel">
           <div className="magic-orb">HP</div>
-          <h2>蝬脩??</h2>
+          <h2>網站功能</h2>
           <ul>
-            <li>銝剜??∠?鞈??亥岷</li>
-            <li>?頂?????漲蝭拚</li>
-            <li>?∠?閰單?敶?</li>
-            <li>閬??暑?????/li>
+            <li>中文卡牌資料查詢</li>
+            <li>按系列、商品、稀有度篩選</li>
+            <li>卡牌詳情彈窗</li>
+            <li>規則與活動資料整理</li>
           </ul>
         </div>
       </section>
@@ -46,7 +48,7 @@ function HomePage({ setPage }) {
       <section className="section-block">
         <div className="section-heading">
           <span>Latest Cards</span>
-          <h2>??啣??亙??/h2>
+          <h2>最新加入卡牌</h2>
         </div>
 
         <div className="latest-card-grid">
@@ -74,7 +76,7 @@ function HomePage({ setPage }) {
                 <div className="latest-card-info">
                   <strong>{card.nameZh}</strong>
                   <span>
-                    {card.cardNo}?認card.type}?認card.rarity || "?芾身摰?}
+                    {card.cardNo}・{card.type}・{card.rarity || "未設定"}
                   </span>
                 </div>
               </button>
@@ -86,26 +88,26 @@ function HomePage({ setPage }) {
       <section className="section-block">
         <div className="section-heading">
           <span>Database</span>
-          <h2>鞈?摨怠摰?/h2>
+          <h2>資料庫內容</h2>
         </div>
 
         <div className="info-grid">
           <div className="info-card">
             <span>Card List</span>
-            <h3>?∠??”</h3>
-            <p>?園??∟??葉???????飛?Ｕ??漲?葉????/p>
+            <h3>卡牌列表</h3>
+            <p>收錄卡號、中文卡名、日文原名、類型、學院、稀有度及中文效果。</p>
           </div>
 
           <div className="info-card">
             <span>Products</span>
-            <h3>???</h3>
-            <p>?渡?韏瑕????????R ?∪??亙??啣?蝟餃???/p>
+            <h3>商品情報</h3>
+            <p>整理起始牌組、補充包、PR 卡及日後新增系列。</p>
           </div>
 
           <div className="info-card">
             <span>Rules</span>
-            <h3>閬?鞈?</h3>
-            <p>??摰閬??暑????撠瘚??葉???/p>
+            <h3>規則資料</h3>
+            <p>提供官方規則、活動規則及對戰流程的中文整理。</p>
           </div>
         </div>
       </section>

@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const CARD_DATA_URL = "/data/union-arena-jp/cards.json";
 
@@ -57,7 +57,7 @@ function UnionArenaProductPage() {
         const data = await response.json();
 
         if (!Array.isArray(data)) {
-          throw new Error("cards.json ?澆?銝 array");
+          throw new Error("cards.json 格式不是 array");
         }
 
         if (!cancelled) {
@@ -67,7 +67,7 @@ function UnionArenaProductPage() {
         if (!cancelled) {
           setCards([]);
           setLoadError(
-            "霈??UNION ARENA cards.json 憭望???蝣箄? public/data/union-arena-jp/cards.json 撌脣??具?
+            "讀取 UNION ARENA cards.json 失敗。請確認 public/data/union-arena-jp/cards.json 已存在。"
           );
           console.error("Failed to load UNION ARENA products:", error);
         }
@@ -112,22 +112,22 @@ function UnionArenaProductPage() {
     <section className="page-section union-arena-product-page">
       <div className="section-heading">
         <p className="eyebrow">UNION ARENA</p>
-        <h1>??蝝Ｗ?</h1>
+        <h1>商品索引</h1>
         <p>
-          ?ㄐ?? cards.json ?芸??渡? UNION ARENA ????銵剁?
-          ?嫣噶銋?撱箇?瘥???閰喟敦???
+          這裡會從 cards.json 自動整理 UNION ARENA 的商品列表，
+          方便之後建立每個商品的詳細頁面。
         </p>
       </div>
 
       {loading && (
         <div className="result-bar">
-          <strong>甇??渡???鞈??色?/strong>
+          <strong>正在整理商品資料……</strong>
         </div>
       )}
 
       {loadError && (
         <div className="notice-box warning">
-          <strong>鞈?霈?仃??/strong>
+          <strong>資料讀取失敗</strong>
           <p>{loadError}</p>
         </div>
       )}
@@ -135,8 +135,8 @@ function UnionArenaProductPage() {
       {!loading && !loadError && (
         <>
           <div className="result-bar">
-            <strong>??蝮賣嚗products.length}</strong>
-            <span>?∠?蝮賣嚗cards.length}</span>
+            <strong>商品總數：{products.length}</strong>
+            <span>卡牌總數：{cards.length}</span>
           </div>
 
           <div className="ua-product-grid">
@@ -144,7 +144,7 @@ function UnionArenaProductPage() {
               <article className="ua-product-card" key={product.id}>
                 <p className="eyebrow">{product.id}</p>
                 <h2>{product.name}</h2>
-                <p>?園??∠?嚗product.count} 撘?/p>
+                <p>收錄卡牌：{product.count} 張</p>
               </article>
             ))}
           </div>

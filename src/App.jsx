@@ -92,32 +92,32 @@ const legacyPageMap = {
 };
 
 const pageTitles = {
-  [ROUTES.PORTAL_HOME]: "蝮賡???,
-  [ROUTES.GAME_SELECT]: "??”",
+  [ROUTES.PORTAL_HOME]: "Home",
+  [ROUTES.GAME_SELECT]: "Game Library",
 
   [ROUTES.HARRY_POTTER_HOME]: "Harry Potter TCG",
-  [ROUTES.HARRY_POTTER_CARDS]: "Harry Potter TCG ?∠??”",
-  [ROUTES.HARRY_POTTER_PRODUCTS]: "Harry Potter TCG ???",
-  [ROUTES.HARRY_POTTER_NEWS]: "Harry Potter TCG ?啗?",
-  [ROUTES.HARRY_POTTER_EVENTS]: "Harry Potter TCG 瘣餃?",
-  [ROUTES.HARRY_POTTER_DECKS]: "Harry Potter TCG ??",
-  [ROUTES.HARRY_POTTER_ABOUT]: "? Harry Potter TCG 鞈?摨?,
+  [ROUTES.HARRY_POTTER_CARDS]: "Harry Potter TCG Cards",
+  [ROUTES.HARRY_POTTER_PRODUCTS]: "Harry Potter TCG Products",
+  [ROUTES.HARRY_POTTER_NEWS]: "Harry Potter TCG News",
+  [ROUTES.HARRY_POTTER_EVENTS]: "Harry Potter TCG Events",
+  [ROUTES.HARRY_POTTER_DECKS]: "Harry Potter TCG Decks",
+  [ROUTES.HARRY_POTTER_ABOUT]: "About Harry Potter TCG",
 
   [ROUTES.UNION_ARENA_HOME]: "UNION ARENA",
-  [ROUTES.UNION_ARENA_CARDS]: "UNION ARENA ?∠??”",
-  [ROUTES.UNION_ARENA_PRODUCTS]: "UNION ARENA ???",
-  [ROUTES.UNION_ARENA_NEWS]: "UNION ARENA ?啗?",
-  [ROUTES.UNION_ARENA_EVENTS]: "UNION ARENA 瘣餃?",
-  [ROUTES.UNION_ARENA_DECKS]: "UNION ARENA ??",
-  [ROUTES.UNION_ARENA_ABOUT]: "? UNION ARENA 鞈?摨?,
+  [ROUTES.UNION_ARENA_CARDS]: "UNION ARENA Cards",
+  [ROUTES.UNION_ARENA_PRODUCTS]: "UNION ARENA Products",
+  [ROUTES.UNION_ARENA_NEWS]: "UNION ARENA News",
+  [ROUTES.UNION_ARENA_EVENTS]: "UNION ARENA Events",
+  [ROUTES.UNION_ARENA_DECKS]: "UNION ARENA Decks",
+  [ROUTES.UNION_ARENA_ABOUT]: "About UNION ARENA",
 
   [ROUTES.ONE_PIECE_HOME]: "ONE PIECE Card Game",
-  [ROUTES.ONE_PIECE_CARDS]: "ONE PIECE Card Game ?∠??”",
-  [ROUTES.ONE_PIECE_PRODUCTS]: "ONE PIECE Card Game ???",
-  [ROUTES.ONE_PIECE_NEWS]: "ONE PIECE Card Game ?啗?",
-  [ROUTES.ONE_PIECE_EVENTS]: "ONE PIECE Card Game 瘣餃?",
-  [ROUTES.ONE_PIECE_DECKS]: "ONE PIECE Card Game ??",
-  [ROUTES.ONE_PIECE_ABOUT]: "? ONE PIECE Card Game 鞈?摨?
+  [ROUTES.ONE_PIECE_CARDS]: "ONE PIECE Card Game Cards",
+  [ROUTES.ONE_PIECE_PRODUCTS]: "ONE PIECE Card Game Products",
+  [ROUTES.ONE_PIECE_NEWS]: "ONE PIECE Card Game News",
+  [ROUTES.ONE_PIECE_EVENTS]: "ONE PIECE Card Game Events",
+  [ROUTES.ONE_PIECE_DECKS]: "ONE PIECE Card Game Decks",
+  [ROUTES.ONE_PIECE_ABOUT]: "About ONE PIECE Card Game"
 };
 
 function normalizeRoute(route) {
@@ -214,7 +214,7 @@ function App() {
   useEffect(() => {
     const title = pageTitles[currentPage] || pageTitles[ROUTES.PORTAL_HOME];
 
-    document.title = `${title}嚚TS' Card Game Library`;
+    document.title = `${title} | MTS' Card Game Library`;
     recordVisit(document.title);
   }, [currentPage]);
 
@@ -271,4 +271,3 @@ function App() {
 }
 
 export default App;
-

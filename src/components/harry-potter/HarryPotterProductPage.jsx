@@ -1,12 +1,12 @@
-﻿import { products } from "../../data/products";
+import { products } from "../../data/products";
 
 function ProductPage() {
   return (
     <section className="page-section">
       <div className="page-title-block">
         <span className="eyebrow">Products</span>
-        <h1>???</h1>
-        <p>?渡?鋆??絲憪?蝯?詨??皜??/p>
+        <h1>商品情報</h1>
+        <p>整理補充包、起始牌組、特典卡及收錄卡清單。</p>
       </div>
 
       <div className="info-grid">
@@ -15,7 +15,7 @@ function ProductPage() {
             <span>{product.type}</span>
             <h2>{product.title}</h2>
             <p>{product.description}</p>
-            <small>?澆?交?嚗product.releaseDate}</small>
+            <small>發售日期：{product.releaseDate}</small>
           </article>
         ))}
       </div>
@@ -24,4 +24,3 @@ function ProductPage() {
 }
 
 export default ProductPage;
-

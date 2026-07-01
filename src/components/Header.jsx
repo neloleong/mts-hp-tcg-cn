@@ -1,127 +1,104 @@
-﻿import { useMemo, useState } from "react";
-
 const HP_BASE = "games/harry-potter";
 const UA_BASE = "games/union-arena";
 const OP_BASE = "games/one-piece";
 
-const portalLinks = [
-  { id: "home", label: "蝮賡??? },
-  { id: "games", label: "??”" }
+const mainNavItems = [
+  { id: "home", label: "Home" },
+  { id: "games", label: "Games" },
+  { id: HP_BASE, label: "Harry Potter TCG" },
+  { id: UA_BASE, label: "UNION ARENA" },
+  { id: OP_BASE, label: "ONE PIECE" }
 ];
 
-const harryPotterLinks = [
-  { id: HP_BASE, label: "HP 擐?" },
-  { id: `${HP_BASE}/cards`, label: "?∠??”" },
-  { id: `${HP_BASE}/products`, label: "???" },
-  { id: `${HP_BASE}/news`, label: "?啗?" },
-  { id: `${HP_BASE}/events`, label: "瘣餃?" },
-  { id: `${HP_BASE}/decks`, label: "??" },
-  { id: `${HP_BASE}/about`, label: "??祉?" }
-];
+const gameNavItems = {
+  [HP_BASE]: [
+    { id: HP_BASE, label: "Home" },
+    { id: `${HP_BASE}/cards`, label: "Cards" },
+    { id: `${HP_BASE}/products`, label: "Products" },
+    { id: `${HP_BASE}/news`, label: "News" },
+    { id: `${HP_BASE}/events`, label: "Events" },
+    { id: `${HP_BASE}/decks`, label: "Decks" },
+    { id: `${HP_BASE}/about`, label: "About" }
+  ],
+  [UA_BASE]: [
+    { id: UA_BASE, label: "Home" },
+    { id: `${UA_BASE}/cards`, label: "Cards" },
+    { id: `${UA_BASE}/products`, label: "Products" },
+    { id: `${UA_BASE}/news`, label: "News" },
+    { id: `${UA_BASE}/events`, label: "Events" },
+    { id: `${UA_BASE}/decks`, label: "Decks" },
+    { id: `${UA_BASE}/about`, label: "About" }
+  ],
+  [OP_BASE]: [
+    { id: OP_BASE, label: "Home" },
+    { id: `${OP_BASE}/cards`, label: "Cards" },
+    { id: `${OP_BASE}/products`, label: "Products" },
+    { id: `${OP_BASE}/news`, label: "News" },
+    { id: `${OP_BASE}/events`, label: "Events" },
+    { id: `${OP_BASE}/decks`, label: "Decks" },
+    { id: `${OP_BASE}/about`, label: "About" }
+  ]
+};
 
-const unionArenaLinks = [
-  { id: UA_BASE, label: "UA 擐?" },
-  { id: `${UA_BASE}/cards`, label: "?∠??”" },
-  { id: `${UA_BASE}/products`, label: "???" },
-  { id: `${UA_BASE}/news`, label: "?啗?" },
-  { id: `${UA_BASE}/events`, label: "瘣餃?" },
-  { id: `${UA_BASE}/decks`, label: "??" },
-  { id: `${UA_BASE}/about`, label: "??祉?" }
-];
-
-function isHarryPotterRoute(pageId) {
-  return pageId === HP_BASE || pageId.startsWith(`${HP_BASE}/`);
-}
-
-function isUnionArenaRoute(pageId) {
-  return pageId === UA_BASE || pageId.startsWith(`${UA_BASE}/`);
-}
-
-function getBrandCopy(currentPage) {
-  if (isHarryPotterRoute(currentPage)) {
-    return {
-      title: "Harry Potter TCG",
-      subtitle: "銝剜??∠?鞈?摨?
-    };
+function getActiveBase(currentPage) {
+  if (currentPage === HP_BASE || currentPage?.startsWith(`${HP_BASE}/`)) {
+    return HP_BASE;
   }
 
-  if (isUnionArenaRoute(currentPage)) {
-    return {
-      title: "UNION ARENA",
-      subtitle: "?交?????澈"
-    };
+  if (currentPage === UA_BASE || currentPage?.startsWith(`${UA_BASE}/`)) {
+    return UA_BASE;
   }
 
-  return {
-    title: "Card Game Library",
-    subtitle: "銝剜??∠??鞈?摨?
-  };
+  if (currentPage === OP_BASE || currentPage?.startsWith(`${OP_BASE}/`)) {
+    return OP_BASE;
+  }
+
+  return "";
 }
 
 function Header({ currentPage, navigate }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const brand = getBrandCopy(currentPage);
-
-  const links = useMemo(() => {
-    if (isHarryPotterRoute(currentPage)) {
-      return [...portalLinks, ...harryPotterLinks];
-    }
-
-    if (isUnionArenaRoute(currentPage)) {
-      return [...portalLinks, ...unionArenaLinks];
-    }
-
-    return [
-      ...portalLinks,
-      { id: HP_BASE, label: "Harry Potter TCG" },
-      { id: UA_BASE, label: "UNION ARENA" },
-      { id: OP_BASE, label: "ONE PIECE" }
-    ];
-  }, [currentPage]);
-
-  function handleNavigate(pageId) {
-    navigate(pageId);
-    setMenuOpen(false);
-  }
+  const activeBase = getActiveBase(currentPage);
+  const sectionNavItems = activeBase ? gameNavItems[activeBase] : [];
 
   return (
     <header className="site-header">
-      <div className="header-inner">
+      <div className="site-header-inner">
         <button
           type="button"
-          className="brand"
-          onClick={() => handleNavigate("home")}
+          className="site-brand"
+          onClick={() => navigate("home")}
         >
-          <span className="brand-main">MTS&apos;</span>
-
-          <span className="brand-copy">
-            <strong>{brand.title}</strong>
-            <span>{brand.subtitle}</span>
-          </span>
+          MTS' Card Game Library
         </button>
 
-        <button
-          type="button"
-          className="menu-btn"
-          onClick={() => setMenuOpen((current) => !current)}
-          aria-label="???詨"
-        >
-          ??        </button>
-
-        <nav className={menuOpen ? "main-nav open" : "main-nav"}>
-          {links.map((link) => (
+        <nav className="site-nav" aria-label="Main navigation">
+          {mainNavItems.map((item) => (
             <button
-              key={link.id}
+              key={item.id}
               type="button"
-              className={currentPage === link.id ? "nav-link active" : "nav-link"}
-              onClick={() => handleNavigate(link.id)}
+              className={currentPage === item.id ? "nav-link active" : "nav-link"}
+              onClick={() => navigate(item.id)}
             >
-              {link.label}
+              {item.label}
             </button>
           ))}
         </nav>
       </div>
+
+      {sectionNavItems.length > 0 && (
+        <nav className="section-nav" aria-label="Game navigation">
+          {sectionNavItems.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              className={currentPage === item.id ? "section-link active" : "section-link"}
+              onClick={() => navigate(item.id)}
+            >
+              {item.label}
+            </button>
+          ))}
+        </nav>
+      )}
     </header>
   );
 }

@@ -1,12 +1,12 @@
-﻿import { events } from "../../data/events";
+import { events } from "../../data/events";
 
 function EventPage() {
   return (
     <section className="page-section">
       <div className="page-title-block">
         <span className="eyebrow">Events</span>
-        <h1>瘣餃?</h1>
-        <p>?亙??舀瘥魚?岫?拇???摮豢暑???勗?鞈???/p>
+        <h1>活動</h1>
+        <p>日後可放比賽、試玩會、教學活動與報名資訊。</p>
       </div>
 
       <div className="info-grid">
@@ -15,7 +15,7 @@ function EventPage() {
             <span>{event.date}</span>
             <h2>{event.title}</h2>
             <p>{event.description}</p>
-            <small>?圈?嚗event.location}</small>
+            <small>地點：{event.location}</small>
           </article>
         ))}
       </div>
@@ -24,4 +24,3 @@ function EventPage() {
 }
 
 export default EventPage;
-

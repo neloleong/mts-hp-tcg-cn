@@ -1,4 +1,4 @@
-﻿import { useEffect } from "react";
+import { useEffect } from "react";
 
 function DetailRow({ label, value }) {
   if (!value || value === "-") return null;
@@ -36,7 +36,7 @@ export default function OnePieceCardModal({ card, onClose }) {
     <div className="op-modal-backdrop" onClick={onClose}>
       <div className="op-modal-panel" onClick={(event) => event.stopPropagation()}>
         <button className="op-modal-close" type="button" onClick={onClose}>
-          ?
+          x
         </button>
 
         <div className="op-modal-image-wrap">
@@ -50,7 +50,7 @@ export default function OnePieceCardModal({ card, onClose }) {
         <div className="op-modal-content">
           <p className="op-kicker">ONE PIECE CARD</p>
 
-          <h2 className="op-modal-title">{card.name || "?芸???}</h2>
+          <h2 className="op-modal-title">{card.name || "Unnamed card"}</h2>
 
           <div className="op-modal-badges">
             {card.cardNo && <span>{card.cardNo}</span>}
@@ -60,38 +60,38 @@ export default function OnePieceCardModal({ card, onClose }) {
           </div>
 
           <div className="op-modal-detail-grid">
-            <DetailRow label="?∟?" value={card.cardNo} />
-            <DetailRow label="蝔?漲" value={card.rarity} />
-            <DetailRow label="?∠車" value={card.cardType} />
-            <DetailRow label="鞎餌" value={card.cost} />
-            <DetailRow label="??? value={card.life} />
-            <DetailRow label="撅祆? value={card.attribute} />
-            <DetailRow label="???? value={card.power} />
-            <DetailRow label="???? value={card.counter} />
-            <DetailRow label="憿" value={card.color} />
-            <DetailRow label="?游撐閮?" value={card.block} />
-            <DetailRow label="?孵?" value={card.feature} />
-            <DetailRow label="?園???" value={card.cardSet || card.productName} />
-            <DetailRow label="蝟餃?" value={card.seriesName} />
+            <DetailRow label="Card No." value={card.cardNo} />
+            <DetailRow label="Rarity" value={card.rarity} />
+            <DetailRow label="Type" value={card.cardType} />
+            <DetailRow label="Cost" value={card.cost} />
+            <DetailRow label="Life" value={card.life} />
+            <DetailRow label="Attribute" value={card.attribute} />
+            <DetailRow label="Power" value={card.power} />
+            <DetailRow label="Counter" value={card.counter} />
+            <DetailRow label="Color" value={card.color} />
+            <DetailRow label="Block" value={card.block} />
+            <DetailRow label="Trait" value={card.feature} />
+            <DetailRow label="Product" value={card.cardSet || card.productName} />
+            <DetailRow label="Series" value={card.seriesName} />
           </div>
 
           {card.effect && (
             <section className="op-modal-text-section">
-              <h3>??</h3>
+              <h3>Effect</h3>
               <p>{card.effect}</p>
             </section>
           )}
 
           {card.trigger && (
             <section className="op-modal-text-section">
-              <h3>閫貊</h3>
+              <h3>Trigger</h3>
               <p>{card.trigger}</p>
             </section>
           )}
 
           {card.sourceUrl && (
             <a className="op-official-link" href={card.sourceUrl} target="_blank" rel="noreferrer">
-              ?亦?摰鞈?
+              Official source
             </a>
           )}
         </div>
@@ -99,4 +99,3 @@ export default function OnePieceCardModal({ card, onClose }) {
     </div>
   );
 }
-

@@ -1,20 +1,21 @@
-﻿function AboutPage() {
+function AboutPage() {
   return (
     <section className="page-section">
       <div className="page-title-block">
         <span className="eyebrow">About</span>
-        <h1>??祉?</h1>
+        <h1>關於本站</h1>
       </div>
 
       <div className="content-card">
         <p>
-          ?祉?摰??箇摰嗅?銝剜?鞈?摨恬??冽?渡? Harry Potter TCG ?∠?鞈??葉?蕃霅胯?????瘣餃?鞈???        </p>
+          本站定位為玩家向中文資料庫，用於整理 Harry Potter TCG 卡牌資料、中文翻譯、收錄商品、新聞及活動資訊。
+        </p>
         <p>
-          ?祉?銝摰蝬脩?????璅??脣??賊?蝝?甈撅祆?嗅??芣??拇??犖??亙??祇?銝?嚗遣霅唬誑鞈??渡??摰嗡漱瘚銝鳴??踹?雿輻摰璅?雿?璆剖恐?喋?        </p>
+          本站不是官方網站。所有商標、角色及相關素材權利屬於其各自權利持有人。若日後公開上線，建議以資料整理和玩家交流為主，避免使用官方標誌作商業宣傳。
+        </p>
       </div>
     </section>
   );
 }
 
 export default AboutPage;
-

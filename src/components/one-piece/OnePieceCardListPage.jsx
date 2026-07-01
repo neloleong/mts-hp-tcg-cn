@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import OnePieceCardModal from "./OnePieceCardModal";
 
 const CARD_DATA_URL = "/data/one-piece-tc/cards.tc.json";
@@ -19,7 +19,7 @@ function uniqueValues(cards, getter) {
     }
   }
 
-  return Array.from(values).sort((a, b) => String(a).localeCompare(String(b), "zh-Hant"));
+  return Array.from(values).sort((a, b) => String(a).localeCompare(String(b)));
 }
 
 function matchesFilter(value, selectedValue) {
@@ -57,7 +57,7 @@ export default function OnePieceCardListPage() {
         const data = await response.json();
 
         if (!Array.isArray(data)) {
-          throw new Error("cards.tc.json ?澆?銝 array");
+          throw new Error("cards.tc.json is not an array");
         }
 
         if (!cancelled) {
@@ -65,7 +65,7 @@ export default function OnePieceCardListPage() {
         }
       } catch (error) {
         if (!cancelled) {
-          setErrorMessage(`?⊥?頛 One Piece ?∠?鞈?嚗?{error.message}`);
+          setErrorMessage(`Failed to load cards: ${error.message}`);
         }
       } finally {
         if (!cancelled) {
@@ -86,7 +86,7 @@ export default function OnePieceCardListPage() {
       colors: uniqueValues(cards, (card) => card.colors || card.color),
       cardTypes: uniqueValues(cards, (card) => card.cardType),
       rarities: uniqueValues(cards, (card) => card.rarity),
-      cardSets: uniqueValues(cards, (card) => card.cardSet || card.productName),
+      cardSets: uniqueValues(cards, (card) => card.cardSet || card.productName)
     };
   }, [cards]);
 
@@ -134,9 +134,10 @@ export default function OnePieceCardListPage() {
     <main className="op-page op-card-list-page">
       <section className="op-hero op-card-list-hero">
         <p className="op-kicker">ONE PIECE CARD GAME</p>
-        <h1>?∠??”</h1>
+        <h1>Card List</h1>
         <p>
-          ?園? ONE PIECE Card Game 蝜?銝剜???????舀??∪???????脯蝔柴??漲?????撠?
+          Search ONE PIECE Card Game cards by name, number, effect, color, type,
+          rarity and product.
         </p>
       </section>
 
@@ -149,66 +150,58 @@ export default function OnePieceCardListPage() {
               setQuery(event.target.value);
               setVisibleCount(PAGE_SIZE);
             }}
-            placeholder="???∪?????敺????.."
+            placeholder="Search name, number, effect, trait or product..."
           />
 
           <button type="button" onClick={resetFilters}>
-            ?身
+            Reset
           </button>
         </div>
 
         <div className="op-filter-grid">
           <label>
-            <span>憿</span>
+            <span>Color</span>
             <select value={color} onChange={handleFilterChange(setColor)}>
-              <option value="">?券憿</option>
+              <option value="">All colors</option>
               {filterOptions.colors.map((item) => (
-                <option key={item} value={item}>
-                  {item}
-                </option>
+                <option key={item} value={item}>{item}</option>
               ))}
             </select>
           </label>
 
           <label>
-            <span>?∠車</span>
+            <span>Type</span>
             <select value={cardType} onChange={handleFilterChange(setCardType)}>
-              <option value="">?券?∠車</option>
+              <option value="">All types</option>
               {filterOptions.cardTypes.map((item) => (
-                <option key={item} value={item}>
-                  {item}
-                </option>
+                <option key={item} value={item}>{item}</option>
               ))}
             </select>
           </label>
 
           <label>
-            <span>蝔?漲</span>
+            <span>Rarity</span>
             <select value={rarity} onChange={handleFilterChange(setRarity)}>
-              <option value="">?券蝔?漲</option>
+              <option value="">All rarities</option>
               {filterOptions.rarities.map((item) => (
-                <option key={item} value={item}>
-                  {item}
-                </option>
+                <option key={item} value={item}>{item}</option>
               ))}
             </select>
           </label>
 
           <label>
-            <span>?園???</span>
+            <span>Product</span>
             <select value={cardSet} onChange={handleFilterChange(setCardSet)}>
-              <option value="">?券??</option>
+              <option value="">All products</option>
               {filterOptions.cardSets.map((item) => (
-                <option key={item} value={item}>
-                  {item}
-                </option>
+                <option key={item} value={item}>{item}</option>
               ))}
             </select>
           </label>
         </div>
 
         <div className="op-result-summary">
-          {loading ? "鞈?頛銝?.." : `憿舐內 ${visibleCards.length} / ${filteredCards.length} 撘萄?}
+          {loading ? "Loading..." : `Showing ${visibleCards.length} / ${filteredCards.length} cards`}
         </div>
       </section>
 
@@ -223,7 +216,7 @@ export default function OnePieceCardListPage() {
               return (
                 <button
                   className="op-card-tile"
-                  key={card.id}
+                  key={card.id || `${card.cardNo}-${card.name}`}
                   type="button"
                   onClick={() => setSelectedCard(card)}
                 >
@@ -246,8 +239,8 @@ export default function OnePieceCardListPage() {
                     <div className="op-card-badges">
                       {card.cardType && <span>{card.cardType}</span>}
                       {card.color && <span>{card.color}</span>}
-                      {card.cost && <span>鞎餌 {card.cost}</span>}
-                      {card.life && <span>? {card.life}</span>}
+                      {card.cost && <span>Cost {card.cost}</span>}
+                      {card.life && <span>Life {card.life}</span>}
                       {card.power && <span>{card.power}</span>}
                     </div>
                   </div>
@@ -263,15 +256,13 @@ export default function OnePieceCardListPage() {
                 type="button"
                 onClick={() => setVisibleCount((current) => current + PAGE_SIZE)}
               >
-                頛?游??∠?
+                Load more
               </button>
             </div>
           )}
 
           {filteredCards.length === 0 && (
-            <div className="op-empty-state">
-              ?曆??啁泵??隞嗥??∠????岫?湔??摮??身蝭拚??
-            </div>
+            <div className="op-empty-state">No cards matched your filters.</div>
           )}
         </>
       )}
@@ -280,4 +271,3 @@ export default function OnePieceCardListPage() {
     </main>
   );
 }
-

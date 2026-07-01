@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import UnionArenaCardModal from "./UnionArenaCardModal";
 
 const CARD_DATA_URL = "/data/union-arena-jp/cards.zh.json";
@@ -13,12 +13,12 @@ function getImageSrc(card) {
   const imageUrl = safeText(card.imageUrl);
   const imageFile = safeText(card.imageFile);
 
-  // Vercel / GitHub ?函蔡???芸?雿輻摰?? URL
+  // Vercel / GitHub 部署時，優先使用官方圖片 URL
   if (imageUrl && /^https?:\/\//i.test(imageUrl)) {
     return imageUrl;
   }
 
-  // ?祆???鋆?images ????fallback ?唳?啣???
+  // 本機有複製 images 時，才 fallback 到本地圖片
   if (imageFile) {
     const normalizedPath = imageFile.replace(/\\/g, "/");
 
@@ -40,7 +40,7 @@ function getImageSrc(card) {
   return "";
 }
 
-function buildOptions(cards, getter, defaultLabel = "?券") {
+function buildOptions(cards, getter, defaultLabel = "全部") {
   const map = new Map();
 
   cards.forEach((card) => {
@@ -76,7 +76,7 @@ function buildProductOptions(cards) {
   });
 
   return [
-    { value: ALL_VALUE, label: "?券??" },
+    { value: ALL_VALUE, label: "全部商品" },
     ...Array.from(map.entries())
       .map(([value, label]) => ({ value, label }))
       .sort((a, b) => a.label.localeCompare(b.label, "ja"))
@@ -161,7 +161,7 @@ function UnionArenaCardListPage() {
         const data = await response.json();
 
         if (!Array.isArray(data)) {
-          throw new Error("cards.zh.json ?澆?銝 array");
+          throw new Error("cards.zh.json 格式不是 array");
         }
 
         if (!cancelled) {
@@ -173,7 +173,7 @@ function UnionArenaCardListPage() {
         if (!cancelled) {
           setCards([]);
           setLoadError(
-            "霈??UNION ARENA cards.zh.json 憭望???蝣箄? public/data/union-arena-jp/cards.zh.json 撌脣??具?
+            "讀取 UNION ARENA cards.zh.json 失敗。請確認 public/data/union-arena-jp/cards.zh.json 已存在。"
           );
         }
       } finally {
@@ -193,7 +193,7 @@ function UnionArenaCardListPage() {
   const productOptions = useMemo(() => buildProductOptions(cards), [cards]);
 
   const rarityOptions = useMemo(
-    () => buildOptions(cards, (card) => card.rarity, "?券蝔?漲"),
+    () => buildOptions(cards, (card) => card.rarity, "全部稀有度"),
     [cards]
   );
 
@@ -202,7 +202,7 @@ function UnionArenaCardListPage() {
       buildOptions(
         cards,
         (card) => card.cardTypeZh || card.cardTypeJp,
-        "?券憿?"
+        "全部類型"
       ),
     [cards]
   );
@@ -212,7 +212,7 @@ function UnionArenaCardListPage() {
       buildOptions(
         cards,
         (card) => card.featureZh || card.featureJp,
-        "?券?孵噩"
+        "全部特徵"
       ),
     [cards]
   );
@@ -283,25 +283,25 @@ function UnionArenaCardListPage() {
     <section className="page-section union-arena-card-list-page">
       <div className="section-heading">
         <p className="eyebrow">UNION ARENA</p>
-        <h1>?∠??”</h1>
+        <h1>卡牌列表</h1>
         <p>
-          ?? UNION ARENA ?交??????????????
-          銝血??乩葉??雿??拙振?亥岷?????
+          搜尋 UNION ARENA 日文版卡牌資料。卡牌資料保留日文原文，
+          並加入中文欄位作玩家查詢與收藏參考。
         </p>
       </div>
 
       <div className="ua-filter-panel ua-card-search-panel">
         <label className="ua-keyword-field">
-          <span>?摮?撠?/span>
+          <span>關鍵字搜尋</span>
           <input
             value={keyword}
             onChange={(event) => setKeyword(event.target.value)}
-            placeholder="頛詨?∪????????摮敺?.."
+            placeholder="輸入卡名、卡號、商品、效果文字、特徵..."
           />
         </label>
 
         <label>
-          <span>??</span>
+          <span>商品</span>
           <select
             value={productId}
             onChange={(event) => setProductId(event.target.value)}
@@ -315,7 +315,7 @@ function UnionArenaCardListPage() {
         </label>
 
         <label>
-          <span>蝔?漲</span>
+          <span>稀有度</span>
           <select
             value={rarity}
             onChange={(event) => setRarity(event.target.value)}
@@ -329,7 +329,7 @@ function UnionArenaCardListPage() {
         </label>
 
         <label>
-          <span>憿?</span>
+          <span>類型</span>
           <select
             value={cardType}
             onChange={(event) => setCardType(event.target.value)}
@@ -343,7 +343,7 @@ function UnionArenaCardListPage() {
         </label>
 
         <label>
-          <span>?孵噩</span>
+          <span>特徵</span>
           <select
             value={feature}
             onChange={(event) => setFeature(event.target.value)}
@@ -358,7 +358,7 @@ function UnionArenaCardListPage() {
 
         <div className="ua-filter-actions">
           <button type="button" className="primary-btn">
-            ??
+            搜尋
           </button>
 
           <button
@@ -366,27 +366,27 @@ function UnionArenaCardListPage() {
             className="secondary-btn"
             onClick={resetFilters}
           >
-            ?身
+            重設
           </button>
         </div>
       </div>
 
       {loading && (
         <div className="result-bar">
-          <strong>甇?霈??UNION ARENA ?∠?鞈??色?/strong>
+          <strong>正在讀取 UNION ARENA 卡牌資料……</strong>
         </div>
       )}
 
       {loadError && (
         <div className="notice-box warning">
-          <strong>鞈?霈?仃??/strong>
+          <strong>資料讀取失敗</strong>
           <p>{loadError}</p>
         </div>
       )}
 
       {!loading && !loadError && (
         <div className="result-bar">
-          <strong>??蝯?嚗filteredCards.length} 撘?/strong>
+          <strong>搜尋結果：{filteredCards.length} 張</strong>
         </div>
       )}
 
@@ -421,7 +421,7 @@ function UnionArenaCardListPage() {
                   )}
                 </div>
 
-                <h2>{card.nameZh || card.nameJp || "?芸???}</h2>
+                <h2>{card.nameZh || card.nameJp || "未命名卡牌"}</h2>
 
                 {card.nameJp && card.nameZh !== card.nameJp && (
                   <p className="ua-card-jp-name">{card.nameJp}</p>
@@ -450,7 +450,7 @@ function UnionArenaCardListPage() {
                       : card.triggerZh}
                   </p>
                 ) : (
-                  <p className="ua-card-preview-text muted">?⊥???摮?/p>
+                  <p className="ua-card-preview-text muted">無效果文字</p>
                 )}
               </div>
             </article>

@@ -1,12 +1,12 @@
-﻿import { news } from "../../data/news";
+import { news } from "../../data/news";
 
 function NewsPage() {
   return (
     <section className="page-section">
       <div className="page-title-block">
         <span className="eyebrow">News</span>
-        <h1>?啗? / ?湔蝝??/h1>
-        <p>閮?蝬脩??湔??∠蕃霅胯?????瘣餃?瘨??/p>
+        <h1>新聞 / 更新紀錄</h1>
+        <p>記錄網站更新、新卡翻譯、商品資料及活動消息。</p>
       </div>
 
       <div className="timeline-list">
@@ -23,4 +23,3 @@ function NewsPage() {
 }
 
 export default NewsPage;
-

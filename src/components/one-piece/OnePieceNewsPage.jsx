@@ -1,14 +1,13 @@
-﻿export default function OnePieceNewsPage() {
+export default function OnePieceNewsPage() {
   return (
     <main className="op-page">
       <section className="op-hero">
         <p className="op-kicker">ONE PIECE CARD GAME</p>
-        <h1>?啗?</h1>
-        <p>甇文?撠??ONE PIECE Card Game 蝜?銝剜??????湔閮???/p>
+        <h1>News</h1>
+        <p>This section will collect ONE PIECE Card Game news and update notes.</p>
       </section>
 
-      <section className="op-empty-state">?啗??皞?銝准?/section>
+      <section className="op-empty-state">News page is under preparation.</section>
     </main>
   );
 }
-

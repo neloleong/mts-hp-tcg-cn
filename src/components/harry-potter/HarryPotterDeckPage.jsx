@@ -1,4 +1,4 @@
-﻿// src/pages/DeckPage.jsx
+// src/pages/DeckPage.jsx
 
 import { useMemo, useRef, useState } from "react";
 import html2canvas from "html2canvas";
@@ -35,7 +35,7 @@ function normalizeTags(value) {
 
   if (typeof value === "string" && value.trim()) {
     return value
-      .split(/[嚗?/嚗/)
+      .split(/[／,/，、]/)
       .map((item) => item.trim())
       .filter(Boolean);
   }
@@ -65,12 +65,12 @@ function inferSeries(cardNo, product) {
 }
 
 function normalizeType(type) {
-  if (!type) return "?嗡?";
+  if (!type) return "其他";
 
-  if (type === "憭乩撈??) return "Partner??;
-  if (type === "Magic ??) return "Magic??;
-  if (type === "???) return "Item??;
-  if (type === "?圈???) return "Location??;
+  if (type === "夥伴卡") return "Partner卡";
+  if (type === "Magic 卡") return "Magic卡";
+  if (type === "道具卡") return "Item卡";
+  if (type === "地點卡") return "Location卡";
 
   return type;
 }
@@ -84,7 +84,7 @@ function normalizeCard(row) {
     row.pack ||
     "booster-philosophers-stone-part-1";
 
-  const nameZh = row.nameZh || row.name_zh || row.name || "?芸???;
+  const nameZh = row.nameZh || row.name_zh || row.name || "未命名卡牌";
 
   const nameJp =
     row.nameJp ||
@@ -154,8 +154,8 @@ function normalizeCard(row) {
 
     nameEn: row.nameEn || row.name_en || "",
 
-    type: normalizeType(row.card_type || row.type || "?嗡?"),
-    house: row.house || row.attribute || "銝剔?",
+    type: normalizeType(row.card_type || row.type || "其他"),
+    house: row.house || row.attribute || "中立",
 
     rarity:
       row.rarity ||
@@ -265,12 +265,13 @@ function DeckSmallCard({ card, count, onAdd, onRemove, onSelect }) {
         >
           <div className="deck-card-id">{card.cardNo || card.id}</div>
           <strong>{getCardName(card)}</strong>
-          <span>{getCardType(card)}嚚ost {getCardCost(card) || "-"}</span>
+          <span>{getCardType(card)}｜Cost {getCardCost(card) || "-"}</span>
         </button>
 
         <div className="deck-count-control">
           <button type="button" onClick={() => onRemove(card)}>
-            ??          </button>
+            −
+          </button>
           <b>{count}</b>
           <button type="button" onClick={() => onAdd(card)}>
             +
@@ -291,7 +292,7 @@ function DeckSlot({ title, card, emptyText, onClear, onSelect }) {
 
         {card && (
           <button type="button" onClick={onClear}>
-            皜
+            清除
           </button>
         )}
       </div>
@@ -315,9 +316,9 @@ function DeckSlot({ title, card, emptyText, onClear, onSelect }) {
 
           <div>
             <strong>{getCardName(card)}</strong>
-            <p>{getCardJapaneseName(card) || card.nameJp || "??}</p>
+            <p>{getCardJapaneseName(card) || card.nameJp || "—"}</p>
             <span>
-              {card.cardNo || card.id}嚚getCardRarity(card) || "??}
+              {card.cardNo || card.id}｜{getCardRarity(card) || "—"}
             </span>
           </div>
         </button>
@@ -343,7 +344,7 @@ function StatBlock({ title, items }) {
           ))}
         </div>
       ) : (
-        <p>?急?瘝?鞈?</p>
+        <p>暫時沒有資料</p>
       )}
     </div>
   );
@@ -386,22 +387,22 @@ function CardPoolItem({
         >
           <div className="deck-card-id">{card.cardNo || card.id}</div>
           <h3>{getCardName(card)}</h3>
-          <p>{getCardJapaneseName(card) || card.nameJp || "??}</p>
+          <p>{getCardJapaneseName(card) || card.nameJp || "—"}</p>
         </button>
 
         <div className="deck-pool-tags">
-          <span>{type || "??}</span>
-          <span>{getCardHouse(card) || "??}</span>
-          <span>{getCardRarity(card) || "??}</span>
+          <span>{type || "—"}</span>
+          <span>{getCardHouse(card) || "—"}</span>
+          <span>{getCardRarity(card) || "—"}</span>
           <span>Cost {getCardCost(card) || "-"}</span>
         </div>
 
         <div className="deck-pool-status">
-          <span>撌脫?伐?{count}</span>
+          <span>已放入：{count}</span>
 
           {!isPartnerCard(card) && !isMpCard(card) && (
             <span>
-              ???嚗sameBaseTotal}/{SAME_CARD_LIMIT}
+              同卡合計：{sameBaseTotal}/{SAME_CARD_LIMIT}
             </span>
           )}
         </div>
@@ -412,7 +413,7 @@ function CardPoolItem({
             className="deck-add-btn"
             onClick={() => onSetPartner(card)}
           >
-            閮剔 Partner
+            設為 Partner
           </button>
         ) : isMpCard(card) ? (
           <button
@@ -420,7 +421,7 @@ function CardPoolItem({
             className="deck-add-btn"
             onClick={() => onSetMp(card)}
           >
-            閮剔 MP
+            設為 MP
           </button>
         ) : (
           <button
@@ -428,7 +429,7 @@ function CardPoolItem({
             className="deck-add-btn"
             onClick={() => onAdd(card)}
           >
-            ???
+            加入牌組
           </button>
         )}
       </div>
@@ -444,8 +445,8 @@ function DeckPage() {
   const [partnerCardId, setPartnerCardId] = useState("");
   const [mpCardId, setMpCardId] = useState("");
   const [keyword, setKeyword] = useState("");
-  const [typeFilter, setTypeFilter] = useState("?券");
-  const [houseFilter, setHouseFilter] = useState("?券");
+  const [typeFilter, setTypeFilter] = useState("全部");
+  const [houseFilter, setHouseFilter] = useState("全部");
   const [selectedCard, setSelectedCard] = useState(null);
   const [notice, setNotice] = useState("");
   const [isExporting, setIsExporting] = useState(false);
@@ -499,12 +500,12 @@ function DeckPage() {
 
   const cardTypes = useMemo(() => {
     const values = new Set(cardList.map(getCardType).filter(Boolean));
-    return ["?券", ...Array.from(values)];
+    return ["全部", ...Array.from(values)];
   }, [cardList]);
 
   const houses = useMemo(() => {
     const values = new Set(cardList.map(getCardHouse).filter(Boolean));
-    return ["?券", ...Array.from(values)];
+    return ["全部", ...Array.from(values)];
   }, [cardList]);
 
   const filteredCards = useMemo(() => {
@@ -529,9 +530,9 @@ function DeckPage() {
         .toLowerCase();
 
       const matchKeyword = !lowerKeyword || text.includes(lowerKeyword);
-      const matchType = typeFilter === "?券" || getCardType(card) === typeFilter;
+      const matchType = typeFilter === "全部" || getCardType(card) === typeFilter;
       const matchHouse =
-        houseFilter === "?券" || getCardHouse(card) === houseFilter;
+        houseFilter === "全部" || getCardHouse(card) === houseFilter;
 
       return matchKeyword && matchType && matchHouse;
     });
@@ -552,13 +553,13 @@ function DeckPage() {
   function addCard(card) {
     if (isPartnerCard(card)) {
       setPartnerCardId(card.id);
-      showNotice(`撌脰身摰?Partner嚗?{getCardName(card)}`);
+      showNotice(`已設定 Partner：${getCardName(card)}`);
       return;
     }
 
     if (isMpCard(card)) {
       setMpCardId(card.id);
-      showNotice(`撌脰身摰?MP嚗?{getCardName(card)}`);
+      showNotice(`已設定 MP：${getCardName(card)}`);
       return;
     }
 
@@ -593,13 +594,13 @@ function DeckPage() {
   }
 
   function clearDeck() {
-    const ok = window.confirm("蝣箏?閬?蝛箔蜓??嚗artner ??MP 銝?鋡急??扎?);
+    const ok = window.confirm("確定要清空主牌組？Partner 和 MP 不會被清除。");
     if (!ok) return;
     setDeck({});
   }
 
   function clearAll() {
-    const ok = window.confirm("蝣箏?閬?蝛箸??蝯?? Partner?P ?蜓????);
+    const ok = window.confirm("確定要清空整個牌組？包括 Partner、MP 和主牌組。");
     if (!ok) return;
 
     setDeck({});
@@ -609,13 +610,13 @@ function DeckPage() {
 
   async function exportDeckPdf() {
     if (!pdfRef.current) {
-      showNotice("?曆??啣隞亙?箇????批捆??);
+      showNotice("找不到可以匯出的牌組內容。");
       return;
     }
 
     try {
       setIsExporting(true);
-      showNotice("甇??Ｙ? PDF嚗?蝔?...");
+      showNotice("正在產生 PDF，請稍等...");
 
       await new Promise((resolve) => {
         window.setTimeout(resolve, 250);
@@ -659,10 +660,10 @@ function DeckPage() {
       const dateText = new Date().toISOString().slice(0, 10);
       pdf.save(`MTS_Harry_Potter_Deck_${dateText}.pdf`);
 
-      showNotice("PDF 撌脩?蒂銝???);
+      showNotice("PDF 已產生並下載。");
     } catch (error) {
       console.error("PDF export failed:", error);
-      showNotice("PDF ?Ｙ?憭望?嚗?瑼Ｘ?∪??臬甇?虜頛??);
+      showNotice("PDF 產生失敗，請檢查卡圖是否正常載入。");
     } finally {
       setIsExporting(false);
     }
@@ -672,9 +673,11 @@ function DeckPage() {
     <section className={`deck-page ${isExporting ? "deck-exporting" : ""}`}>
       <div className="page-title-block">
         <div className="eyebrow">Deck Builder</div>
-        <h1>??撱箇?</h1>
+        <h1>牌組建立</h1>
         <p>
-          敺??銵典??亦?蝯?銝餌?蝯?憭?{MAIN_DECK_LIMIT} 撘蛛?銝???Partner ?∪? MP ?～?          ??撘萄? a???????憭?{SAME_CARD_LIMIT} 撘萸?        </p>
+          從卡牌列表加入牌組；主牌組最多 {MAIN_DECK_LIMIT} 張，不包括 Partner 卡和 MP 卡。
+          同一張卡包含 a、b、異圖版合計最多 {SAME_CARD_LIMIT} 張。
+        </p>
       </div>
 
       {notice && <div className="deck-notice">{notice}</div>}
@@ -686,39 +689,41 @@ function DeckPage() {
           onClick={exportDeckPdf}
           disabled={isExporting}
         >
-          {isExporting ? "甇??Ｙ? PDF..." : "?臬 PDF 瑼?"}
+          {isExporting ? "正在產生 PDF..." : "匯出 PDF 檔案"}
         </button>
 
         <button type="button" className="secondary-btn" onClick={clearDeck}>
-          皜征銝餌?蝯?        </button>
+          清空主牌組
+        </button>
 
         <button type="button" className="secondary-btn" onClick={clearAll}>
-          皜征?券
+          清空全部
         </button>
       </div>
 
       <div className="deck-pdf-area" ref={pdfRef}>
         <div className="deck-pdf-header">
-          <h2>MTS&apos; Harry Potter TCG ??銵?/h2>
+          <h2>MTS&apos; Harry Potter TCG 牌組表</h2>
           <p>
-            銝餌?蝯?{mainDeckTotal}/{MAIN_DECK_LIMIT} 撘蛛?
-            Partner嚗partnerCard ? getCardName(partnerCard) : "?芷"}嚚?            MP嚗mpCard ? getCardName(mpCard) : "?芷"}
+            主牌組 {mainDeckTotal}/{MAIN_DECK_LIMIT} 張｜
+            Partner：{partnerCard ? getCardName(partnerCard) : "未選"}｜
+            MP：{mpCard ? getCardName(mpCard) : "未選"}
           </p>
         </div>
 
         <div className="deck-special-row">
           <DeckSlot
-            title="Partner ??
+            title="Partner 卡"
             card={partnerCard}
-            emptyText="撠?豢? Partner ??
+            emptyText="尚未選擇 Partner 卡"
             onClear={() => setPartnerCardId("")}
             onSelect={setSelectedCard}
           />
 
           <DeckSlot
-            title="MP ??
+            title="MP 卡"
             card={mpCard}
-            emptyText="撠?豢? MP ??
+            emptyText="尚未選擇 MP 卡"
             onClear={() => setMpCardId("")}
             onSelect={setSelectedCard}
           />
@@ -726,38 +731,38 @@ function DeckPage() {
 
         <div className="deck-summary-panel">
           <div>
-            <span>銝餌?蝯撐??/span>
+            <span>主牌組張數</span>
             <strong>
               {mainDeckTotal}/{MAIN_DECK_LIMIT}
             </strong>
           </div>
 
           <div>
-            <span>撌脤?∠車</span>
+            <span>已選卡種</span>
             <strong>{mainDeckCards.length}</strong>
           </div>
 
           <div>
             <span>Partner</span>
-            <strong>{partnerCard ? "撌脤" : "?芷"}</strong>
+            <strong>{partnerCard ? "已選" : "未選"}</strong>
           </div>
 
           <div>
             <span>MP</span>
-            <strong>{mpCard ? "撌脤" : "?芷"}</strong>
+            <strong>{mpCard ? "已選" : "未選"}</strong>
           </div>
         </div>
 
         <div className="deck-stat-grid">
-          <StatBlock title="Cost 鞎餌?脩?" items={costCurve} />
-          <StatBlock title="?∠?蝔桅?" items={typeDistribution} />
-          <StatBlock title="摮賊??" items={houseDistribution} />
-          <StatBlock title="蝔?漲??" items={rarityDistribution} />
+          <StatBlock title="Cost 費用曲線" items={costCurve} />
+          <StatBlock title="卡牌種類" items={typeDistribution} />
+          <StatBlock title="學院分佈" items={houseDistribution} />
+          <StatBlock title="稀有度分佈" items={rarityDistribution} />
         </div>
 
         <div className="deck-section-title">
-          <h2>?桀?銝餌?蝯?/h2>
-          <span>{mainDeckTotal} 撘?/span>
+          <h2>目前主牌組</h2>
+          <span>{mainDeckTotal} 張</span>
         </div>
 
         {deckCards.length > 0 ? (
@@ -775,29 +780,29 @@ function DeckPage() {
           </div>
         ) : (
           <div className="empty-box">
-            <h3>??隞?舐征??/h3>
-            <p>隢銝?⊥??豢??∠??????/p>
+            <h3>牌組仍然是空的</h3>
+            <p>請在下方卡池選擇卡牌加入牌組。</p>
           </div>
         )}
       </div>
 
       <div className="deck-section-title deck-pool-title">
-        <h2>?⊥??豢?</h2>
-        <span>{filteredCards.length} 撘萄</span>
+        <h2>卡池選擇</h2>
+        <span>{filteredCards.length} 張卡</span>
       </div>
 
       <div className="deck-filter-panel">
         <label>
-          <span>??</span>
+          <span>搜尋</span>
           <input
             value={keyword}
             onChange={(event) => setKeyword(event.target.value)}
-            placeholder="頛詨?∪??楊?????????
+            placeholder="輸入卡名、編號、日文名、類型、效果"
           />
         </label>
 
         <label>
-          <span>?∠?蝔桅?</span>
+          <span>卡牌種類</span>
           <select
             value={typeFilter}
             onChange={(event) => setTypeFilter(event.target.value)}
@@ -811,7 +816,7 @@ function DeckPage() {
         </label>
 
         <label>
-          <span>摮賊</span>
+          <span>學院</span>
           <select
             value={houseFilter}
             onChange={(event) => setHouseFilter(event.target.value)}
@@ -835,11 +840,11 @@ function DeckPage() {
             onAdd={addCard}
             onSetPartner={(target) => {
               setPartnerCardId(target.id);
-              showNotice(`撌脰身摰?Partner嚗?{getCardName(target)}`);
+              showNotice(`已設定 Partner：${getCardName(target)}`);
             }}
             onSetMp={(target) => {
               setMpCardId(target.id);
-              showNotice(`撌脰身摰?MP嚗?{getCardName(target)}`);
+              showNotice(`已設定 MP：${getCardName(target)}`);
             }}
             onSelect={setSelectedCard}
           />

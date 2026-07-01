@@ -1,8 +1,8 @@
-﻿import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const SUMMARY_URL = "/data/one-piece-tc/summary.json";
 
-export default function OnePieceHomePage() {
+export default function OnePieceHomePage({ navigate }) {
   const [summary, setSummary] = useState(null);
 
   useEffect(() => {
@@ -11,7 +11,6 @@ export default function OnePieceHomePage() {
     async function loadSummary() {
       try {
         const response = await fetch(SUMMARY_URL);
-
         if (!response.ok) return;
 
         const data = await response.json();
@@ -36,61 +35,65 @@ export default function OnePieceHomePage() {
   return (
     <main className="op-page op-home-page">
       <section className="op-hero">
-        <p className="op-kicker">MTS&apos; Card Game Library</p>
-        <h1>ONE PIECE Card Game 蝜?銝剜??∠?鞈?摨?/h1>
+        <p className="op-kicker">MTS' Card Game Library</p>
+        <h1>ONE PIECE Card Game Database</h1>
         <p>
-          ?渡? ONE PIECE Card Game 蝜?銝剜?????????晞???摮??脯敺???蝭拚???
+          Browse ONE PIECE Card Game Traditional Chinese card data, products,
+          effects, colors, traits, images and search filters.
         </p>
 
         <div className="op-hero-actions">
-          <a href="#/games/one-piece/cards">?亦??∠??”</a>
-          <a href="#/games/one-piece/products">?亦????</a>
+          <button type="button" onClick={() => navigate?.("games/one-piece/cards")}>
+            View cards
+          </button>
+          <button type="button" onClick={() => navigate?.("games/one-piece/products")}>
+            View products
+          </button>
         </div>
       </section>
 
       <section className="op-stat-grid">
         <article>
           <strong>{summary?.cards?.total ?? "4640"}</strong>
-          <span>?∠?鞈?</span>
+          <span>Cards</span>
         </article>
 
         <article>
           <strong>{summary?.products?.total ?? "251"}</strong>
-          <span>?? / 蝟餃?鞈?</span>
+          <span>Products</span>
         </article>
 
         <article>
           <strong>{summary?.cards?.withImageUrl ?? "4640"}</strong>
-          <span>摰?? URL</span>
+          <span>Image URLs</span>
         </article>
 
         <article>
           <strong>TC</strong>
-          <span>蝜?銝剜???/span>
+          <span>Traditional Chinese</span>
         </article>
       </section>
 
       <section className="op-section">
-        <h2>?桀??</h2>
+        <h2>Features</h2>
 
         <div className="op-feature-grid">
           <article>
-            <h3>?∠???</h3>
-            <p>?舀?∪?????敺???蝟餃?????/p>
+            <h3>Card search</h3>
+            <p>Search by name, card number, effect, trait, product and series.</p>
           </article>
 
           <article>
-            <h3>璇辣蝭拚</h3>
-            <p>?舀?憿?蝔柴??漲????翰?祟?詻?/p>
+            <h3>Filters</h3>
+            <p>Filter cards by color, card type, rarity and product.</p>
           </article>
 
           <article>
-            <h3>?∠?閰單?</h3>
-            <p>憿舐內?∪??祥?具??賬??????孛?潸?摰鞈??????/p>
+            <h3>Card details</h3>
+            <p>Open each card to view image, stats, effect text and official link.</p>
           </article>
         </div>
       </section>
     </main>
   );
 }
-

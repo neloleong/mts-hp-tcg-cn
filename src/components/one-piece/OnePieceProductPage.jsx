@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const PRODUCT_DATA_URL = "/data/one-piece-tc/products.tc.json";
 
@@ -21,7 +21,7 @@ export default function OnePieceProductPage() {
         const data = await response.json();
 
         if (!Array.isArray(data)) {
-          throw new Error("products.tc.json ?澆?銝 array");
+          throw new Error("products.tc.json is not an array");
         }
 
         if (!cancelled) {
@@ -29,7 +29,7 @@ export default function OnePieceProductPage() {
         }
       } catch (error) {
         if (!cancelled) {
-          setErrorMessage(`?⊥?頛??鞈?嚗?{error.message}`);
+          setErrorMessage(`Failed to load products: ${error.message}`);
         }
       }
     }
@@ -58,8 +58,8 @@ export default function OnePieceProductPage() {
     <main className="op-page op-product-page">
       <section className="op-hero">
         <p className="op-kicker">ONE PIECE CARD GAME</p>
-        <h1>???</h1>
-        <p>?渡? ONE PIECE Card Game 蝜?銝剜?????頂??撠??∠??賊???/p>
+        <h1>Products</h1>
+        <p>Browse products, series and the number of cards included in each set.</p>
       </section>
 
       <section className="op-filter-panel">
@@ -68,12 +68,12 @@ export default function OnePieceProductPage() {
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="?????頂???.."
+            placeholder="Search products, series or card numbers..."
           />
         </div>
 
         <div className="op-result-summary">
-          憿舐內 {filteredProducts.length} / {products.length} ????蝟餃?
+          Showing {filteredProducts.length} / {products.length} products
         </div>
       </section>
 
@@ -84,11 +84,11 @@ export default function OnePieceProductPage() {
           <article className="op-product-card" key={product.id || product.productKey}>
             <div>
               <p className="op-product-label">PRODUCT</p>
-              <h2>{product.name || product.title || "?芸????}</h2>
+              <h2>{product.name || product.title || "Unnamed product"}</h2>
             </div>
 
             <div className="op-product-meta">
-              <span>{product.cardCount || 0} 撘萄??/span>
+              <span>{product.cardCount || 0} cards</span>
 
               {product.seriesNames?.slice(0, 2).map((seriesName) => (
                 <span key={seriesName}>{seriesName}</span>
@@ -97,8 +97,8 @@ export default function OnePieceProductPage() {
 
             {product.colors?.length > 0 && (
               <div className="op-card-badges">
-                {product.colors.slice(0, 8).map((color) => (
-                  <span key={color}>{color}</span>
+                {product.colors.slice(0, 8).map((item) => (
+                  <span key={item}>{item}</span>
                 ))}
               </div>
             )}
@@ -107,9 +107,8 @@ export default function OnePieceProductPage() {
       </section>
 
       {filteredProducts.length === 0 && (
-        <div className="op-empty-state">?曆??啁泵??隞嗥???鞈???/div>
+        <div className="op-empty-state">No products matched your search.</div>
       )}
     </main>
   );
 }
-
